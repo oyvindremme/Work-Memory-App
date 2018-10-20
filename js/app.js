@@ -37,7 +37,7 @@ const functions = {
         for (let i = 0; i < numbers.length; i++) {
             app.innerHTML += `
                 <div class="col-3">
-                    <input type="number" class="application__number" value="${numbers[i]}" maxlength="1" readonly>
+                    <input type="text" class="application__number" value="${numbers[i]}" maxlength="1" readonly>
                 </div>
             `;
         }
@@ -54,7 +54,7 @@ const functions = {
         for (let i = 0; i < numbers.length; i++) {
             app.innerHTML += `
                 <div class="col-3">
-                    <input type="number" class="application__number" maxlength="1">
+                    <input type="text" class="application__number" maxlength="1" pattern="[0-9]">
                 </div>
             `;
         }
@@ -64,7 +64,7 @@ const functions = {
         setTimeout(() => {
             // Pushes the guesses the user made to the guesses array
             for (let i = 0; i < numbers.length; i++) {
-                appNumbers[i].value === '' ? guesses.push('?') : guesses.push(parseInt(appNumbers[i].value));
+                appNumbers[i].value === '' || appNumbers[i].value === 'e' || appNumbers[i].value === 'E' || appNumbers[i].value === ' ' ? guesses.push('?') : guesses.push(parseInt(appNumbers[i].value));
             }
             functions.getScore();
         }, 5000);
@@ -80,7 +80,7 @@ const functions = {
             numbers[i] === guesses[i]
             // Displays a success on the input if the user correctly guessed the number
             ? app.innerHTML += `<div class="col-3">
-                                    <input type="number" class="application__number border-success text-success" value="${guesses[i]}" maxlength="1" readonly>
+                                    <input type="text" class="application__number border-success text-success" value="${guesses[i]}" maxlength="1" readonly>
                                 </div>`
             // Displays an error on the input if the user guessed the wrong number
             : app.innerHTML += `<div class="col-3">
