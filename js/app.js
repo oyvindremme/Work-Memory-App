@@ -19,8 +19,8 @@ const functions = {
         // Adds button for starting application
         app.innerHTML = `
             <h1>Hello!</h1>
-            <p class="lead">Press start to begin.</p>
-            <button class="btn btn-outline-dark" onclick="functions.showNumbers()">Start</button>
+            <p>Press start to begin.</p>
+            <button class="btn btn-lg btn-outline-dark" onclick="functions.showNumbers()">Start</button>
         `;
     },
     // Shows the numbers the user has to guess
@@ -89,7 +89,7 @@ const functions = {
         }
         // Adds a button to go back to the application start
         app.innerHTML += `
-            <button class="btn btn-lg btn-outline-dark" onclick="functions.init()">Try again</button>
+            <button class="btn btn-lg btn-outline-dark mt-4" onclick="functions.init()">Try again</button>
         `;
         // FOR DEBUGGING
         console.log(guesses);
