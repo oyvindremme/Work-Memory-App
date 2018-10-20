@@ -22,7 +22,7 @@ const functions = {
     // Shows the numbers the user has to guess
     showNumbers: () => {
         // Clears the DOM
-        app.innerHTML = "";
+        app.innerHTML = ``;
         // Adds random numbers to array
         while (numbers.length < 4) {
             numbers.push(Math.floor(Math.random() * 10));
@@ -43,7 +43,7 @@ const functions = {
     // This function requires the user to guess the numbers that was shown (in correct order) in the previous function
     guessNumbers: () => {
         // Clears the DOM
-        app.innerHTML = "";
+        app.innerHTML = ``;
         // Adds inputs to the DOM from amount of numbers existing in the numbers array
         for (let i = 0; i < numbers.length; i++) {
             app.innerHTML += `
@@ -58,7 +58,7 @@ const functions = {
         setTimeout(() => {
             // Pushes the guesses the user made to the guesses array
             for (let i = 0; i < numbers.length; i++) {
-                guesses.push(parseInt(appNumbers[i].value));
+                appNumbers[i].value === '' ? guesses.push('?') : guesses.push(parseInt(appNumbers[i].value));
             }
             functions.getScore();
         }, 5000);
@@ -67,28 +67,23 @@ const functions = {
     // The user gets an overview of what he/she guessed right and wrong
     getScore: () => {
         // Clears the DOM
-        app.innerHTML = "";
+        app.innerHTML = ``;
         // Loops through and compares the user guesses to the numbers array
         for (let i = 0; i < guesses.length; i++) {
+            // Ternary operator for comparing stored numbers to user guesses
+            numbers[i] === guesses[i]
             // Displays a success on the input if the user correctly guessed the number
-            if (numbers[i] === guesses[i]) {
-                app.innerHTML += `
-                    <div class="col-3">
-                        <input type="text" class="application__number border-success text-success" value="${guesses[i]}" maxlength="1" readonly>
-                    </div>
-                `;
-            } // Displays an error on the input if the user didn't guess the number right
-            else {
-                app.innerHTML += `
-                    <div class="col-3">
-                        <input type="text" class="application__number border-danger text-danger" value="${guesses[i]}" maxlength="1" readonly>
-                    </div>
-                `;
-            }
+            ? app.innerHTML += `<div class="col-3">
+                                    <input type="text" class="application__number border-success text-success" value="${guesses[i]}" maxlength="1" readonly>
+                                </div>`
+            // Displays an error on the input if the user guessed the wrong number
+            : app.innerHTML += `<div class="col-3">
+                                    <input type="text" class="application__number border-danger text-danger" value="${guesses[i]}" maxlength="1" readonly>
+                                </div>`;
         }
         // Adds a button to go back to the application start
         app.innerHTML += `
-            <button class="btn btn-lg btn-outline-dark" onclick="init()">Try again</button>
+            <button class="btn btn-lg btn-outline-dark" onclick="functions.init()">Try again</button>
         `;
         // FOR DEBUGGING
         console.log(guesses);
