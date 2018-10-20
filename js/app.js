@@ -54,7 +54,7 @@ const functions = {
         for (let i = 0; i < numbers.length; i++) {
             app.innerHTML += `
                 <div class="col-3">
-                    <input type="text" class="application__number" maxlength="1" pattern="[0-9]">
+                    <input type="text" class="application__number" maxlength="1" inputMode="numeric" pattern="[0-9]*">
                 </div>
             `;
         }
@@ -89,7 +89,7 @@ const functions = {
         }
         // Adds a button to go back to the application start
         app.innerHTML += `
-            <button class="btn btn-lg btn-outline-dark mt-4" onclick="functions.init()">Try again</button>
+            <button class="btn btn-lg btn-outline-dark mt-5" onclick="functions.init()">Try again</button>
         `;
         // FOR DEBUGGING
         console.log(guesses);
