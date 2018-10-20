@@ -37,7 +37,7 @@ const functions = {
         for (let i = 0; i < numbers.length; i++) {
             app.innerHTML += `
                 <div class="col-3">
-                    <input type="text" class="application__number" value="${numbers[i]}" maxlength="1" readonly>
+                    <input id="inp${i + 1}" type="text" class="application__number" value="${numbers[i]}" maxlength="1" readonly>
                 </div>
             `;
         }
@@ -54,7 +54,7 @@ const functions = {
         for (let i = 0; i < numbers.length; i++) {
             app.innerHTML += `
                 <div class="col-3">
-                    <input type="text" class="application__number" maxlength="1" inputMode="numeric" pattern="[0-9]*">
+                    <input type="text" class="application__number" inputMode="numeric" pattern="[0-9]*" maxlength="1">
                 </div>
             `;
         }
@@ -80,11 +80,11 @@ const functions = {
             numbers[i] === guesses[i]
             // Displays a success on the input if the user correctly guessed the number
             ? app.innerHTML += `<div class="col-3">
-                                    <input type="text" class="application__number border-success text-success" value="${guesses[i]}" maxlength="1" readonly>
+                                    <input id="inp${i + 1}" type="text" class="application__number border-success text-success" value="${guesses[i]}" maxlength="1" readonly>
                                 </div>`
             // Displays an error on the input if the user guessed the wrong number
             : app.innerHTML += `<div class="col-3">
-                                    <input type="text" class="application__number border-danger text-danger" value="${guesses[i]}" maxlength="1" readonly>
+                                    <input id="inp${i + 1}" type="text" class="application__number border-danger text-danger" value="${guesses[i]}" maxlength="1" readonly>
                                 </div>`;
         }
         // Adds a button to go back to the application start
