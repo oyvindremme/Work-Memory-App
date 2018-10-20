@@ -10,17 +10,23 @@ let guesses = [];
 const functions = {
     // Initial function. This is the first thing the user sees when opening the application and clicking "Try again"
     init: () => {
+        // Adds flex column Bootstrap 4 class
+        app.classList.add('flex-column');
         // Array for numbers generated
         numbers = [];
         // Array for user's guesses/numbers
         guesses = [];
         // Adds button for starting application
         app.innerHTML = `
-            <button class="btn btn-lg btn-outline-dark" onclick="functions.showNumbers()">Start</button>
+            <h1>Hello!</h1>
+            <p class="lead">Press start to begin.</p>
+            <button class="btn btn-outline-dark" onclick="functions.showNumbers()">Start</button>
         `;
     },
     // Shows the numbers the user has to guess
     showNumbers: () => {
+        // Removes flex column Bootstrap 4 class
+        app.classList.remove('flex-column');
         // Clears the DOM
         app.innerHTML = ``;
         // Adds random numbers to array

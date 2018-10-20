@@ -3,11 +3,7 @@
   padding: 0; }
 
 .application {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative; }
+  min-height: 100vh; }
   .application__number {
     width: 100%;
     font-weight: bold;
@@ -23,9 +19,5 @@ input {
 
 :-webkit-autofill {
   color: #fff !important; }
-
-.btn-dark {
-  background-color: #000000;
-  border-color: #000000; }
 
 /*# sourceMappingURL=style.css.map */

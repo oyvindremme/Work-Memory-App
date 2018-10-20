@@ -5,10 +5,6 @@
 
 .application {
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
     &__number {
         width: 100%;
         font-weight: bold;
@@ -22,8 +18,3 @@
 
 input {-webkit-appearance: none; box-shadow: none !important; }
 :-webkit-autofill { color: #fff !important; }
-
-.btn-dark {
-    background-color: #000000;
-    border-color: #000000;
-}
