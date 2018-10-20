@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.application {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    &__number {
+        width: 100%;
+        font-weight: bold;
+        text-align: center;
+        font-size: 15vw;
+        line-height: 1;
+        border: 0;
+        border-bottom: 3px solid #000000;
+    }
+}
+
+input {-webkit-appearance: none; box-shadow: none !important; }
+:-webkit-autofill { color: #fff !important; }
+
+.btn-dark {
+    background-color: #000000;
+    border-color: #000000;
+}
