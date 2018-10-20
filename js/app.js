@@ -19,7 +19,7 @@ const functions = {
         // Adds button for starting application
         app.innerHTML = `
             <h1>Hello!</h1>
-            <p>Press start to begin.</p>
+            <p class="lead">Press the start button to begin.</p>
             <button class="btn btn-lg btn-outline-dark" onclick="functions.showNumbers()">Start</button>
         `;
     },
