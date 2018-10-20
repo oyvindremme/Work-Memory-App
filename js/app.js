@@ -37,7 +37,7 @@ const functions = {
         for (let i = 0; i < numbers.length; i++) {
             app.innerHTML += `
                 <div class="col-3">
-                    <input type="text" class="application__number" value="${numbers[i]}" maxlength="1" readonly>
+                    <input type="number" class="application__number" value="${numbers[i]}" maxlength="1" readonly>
                 </div>
             `;
         }
@@ -54,7 +54,7 @@ const functions = {
         for (let i = 0; i < numbers.length; i++) {
             app.innerHTML += `
                 <div class="col-3">
-                    <input type="text" class="application__number" maxlength="1">
+                    <input type="number" class="application__number" maxlength="1">
                 </div>
             `;
         }
@@ -80,7 +80,7 @@ const functions = {
             numbers[i] === guesses[i]
             // Displays a success on the input if the user correctly guessed the number
             ? app.innerHTML += `<div class="col-3">
-                                    <input type="text" class="application__number border-success text-success" value="${guesses[i]}" maxlength="1" readonly>
+                                    <input type="number" class="application__number border-success text-success" value="${guesses[i]}" maxlength="1" readonly>
                                 </div>`
             // Displays an error on the input if the user guessed the wrong number
             : app.innerHTML += `<div class="col-3">
