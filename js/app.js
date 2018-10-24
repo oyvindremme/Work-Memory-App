@@ -12,7 +12,7 @@ const functions = {
         app.innerHTML = `
             <h1>Hello!</h1>
             <p class="lead">Press the start button to begin.</p>
-            <button class="btn btn-lg btn-outline-dark" onclick="functions.showNumbers()">Start</button>
+            <button class="btn btn-lg btn-success" onclick="functions.showNumbers()">Start</button>
         `;
     },
     showNumbers: () => {
@@ -28,22 +28,23 @@ const functions = {
                 </div>
             `;
         });
-        setTimeout(() => {
+        setTimeout(function() {
             functions.guessNumbers();
         }, 2000);
     },
     guessNumbers: () => {
         app.innerHTML = ``;
-        numbers.forEach(number => {
+        numbers.forEach(() => {
             app.innerHTML += `
                 <div class="col-3">
-                    <input type="text" class="application__number" inputMode="numeric" pattern="[0-9]*" maxlength="1">
+                    <input type="number" class="application__number" inputMode="numeric" pattern="[0-9]*" maxlength="1">
                 </div>
             `;
         });
+        appNumbers[0].focus();
         setTimeout(() => {
             for (let i = 0; i < numbers.length; i++) {
-                typeof appNumbers[i] === 'number' ? guesses.push(parseInt(appNumbers[i].value)) : guesses.push('?');
+                typeof parseInt(appNumbers[i].value) === 'number' ? guesses.push(parseInt(appNumbers[i].value)) : guesses.push('?');
             }
             functions.getScore();
         }, 5000);
@@ -67,7 +68,7 @@ const functions = {
             }
         }
         app.innerHTML += `
-            <button class="btn btn-lg btn-outline-dark mt-5" onclick="functions.init()">Try again</button>
+            <button class="btn btn-lg btn-success mt-5" onclick="functions.init()">Try again</button>
         `;
     }
 };

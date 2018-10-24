@@ -16,5 +16,15 @@
     }
 }
 
+#loading-line {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 20px;
+    background-color: #28a745;
+    transition: 400ms width;
+}
+
 input {-webkit-appearance: none; box-shadow: none !important; }
 :-webkit-autofill { color: #fff !important; }
