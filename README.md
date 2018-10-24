@@ -7,3 +7,4 @@ A "web application" for measuring your work memory.
 - [ ] Go to next field when filled out
 - [ ] Stop function when last field is completed (?)
 - [ ] Add countdown music (?)
+- [ ] Add instructions on how to use app (video or text?)
