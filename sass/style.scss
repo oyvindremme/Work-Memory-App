@@ -4,7 +4,10 @@
 }
 
 .application {
-    min-height: 100vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     &__number {
         width: 100%;
         font-weight: bold;
@@ -16,14 +19,27 @@
     }
 }
 
-#loading-line {
+#countbar {
     position: absolute;
     bottom: 0;
-    right: 0;
-    width: 100%;
+    left: 0;
+    width: 0%;
     height: 20px;
     background-color: #28a745;
     transition: 400ms width;
+}
+
+.counting {
+     animation: progressing 5s linear;   
+}
+
+@keyframes progressing {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
 }
 
 input {-webkit-appearance: none; box-shadow: none !important; }
