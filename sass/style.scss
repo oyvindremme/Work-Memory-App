@@ -1,6 +1,17 @@
+$primary: #28a745;
+
 * {
     margin: 0;
     padding: 0;
+}
+
+#level {
+    display: none;
+    position: absolute;
+    background-color: $primary;
+    color: white;
+    padding: 5px 10px;
+    font-size: 25px;
 }
 
 .application {
@@ -26,7 +37,7 @@
     left: 0;
     width: 0%;
     height: 20px;
-    background-color: #28a745;
+    background-color: $primary;
     transition: 400ms width;
 }
 
@@ -41,6 +52,12 @@
     100% {
         width: 100%;
     }
+}
+
+.correct-number {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 input {-webkit-appearance: none; box-shadow: none !important; }

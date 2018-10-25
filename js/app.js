@@ -1,3 +1,6 @@
+const level = document.getElementById("level");
+let currentLevel = 0;
+
 const textsContainer = document.getElementById('texts');
 const numberContainer = document.getElementById('numbers');
 const buttonContainer = document.getElementById('buttons');
@@ -17,6 +20,7 @@ let greetings = ["Hello", "Cheerio", "Sup", "Yo", "Bonjour", "Hola"];
 
 const functions = {
     init: () => {
+        currentLevel = 0;
         numbers = [];
         guesses = [];
         rights = 0;
@@ -36,6 +40,13 @@ const functions = {
         amount++;
         numbers = [];
         guesses = [];
+
+        currentLevel++;
+        level.style.display = "block";
+        level.innerHTML = `Level ${currentLevel}`;
+
+        console.log(currentLevel);
+
         textsContainer.innerHTML = ``;
         numberContainer.innerHTML = ``;
         buttonContainer.innerHTML = ``;
@@ -94,6 +105,8 @@ const functions = {
         }
     },
     getScore: () => {
+        level.style.display = "none";
+
         countdown.classList.remove("counting");
         numberContainer.innerHTML = ``;
         for (let i = 0; i < guesses.length; i++) {
@@ -109,6 +122,7 @@ const functions = {
                 numberContainer.innerHTML += `
                     <div class="col-3 mb-3">
                         <input id="inp${i + 1}" type="text" class="application__number border-danger text-danger" value="${guesses[i]}" maxlength="1" readonly>
+                        <span class="text-success correct-number">${numbers[i]}</span>
                     </div>
                 `;
             }
@@ -116,8 +130,8 @@ const functions = {
         if (wrongs >= 1) {
             textsContainer.innerHTML = `
                 <div class="col-md-12 text-center">
-                    <h1>Shucks!</h1>
-                    <p class="lead">Better luck next time.</p>
+                    <h1>Oops!</h1>
+                    <p class="lead">You made it to level ${currentLevel}.</p>
                 </div>
             `;
             buttonContainer.innerHTML = `

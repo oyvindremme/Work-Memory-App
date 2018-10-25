@@ -2,6 +2,14 @@
   margin: 0;
   padding: 0; }
 
+#level {
+  display: none;
+  position: absolute;
+  background-color: #28a745;
+  color: white;
+  padding: 5px 10px;
+  font-size: 25px; }
+
 .application {
   display: grid;
   justify-items: center;
@@ -34,6 +42,11 @@
     width: 0%; }
   100% {
     width: 100%; } }
+.correct-number {
+  position: absolute;
+  top: 0;
+  right: 0; }
+
 input {
   -webkit-appearance: none;
   box-shadow: none !important; }
