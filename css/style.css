@@ -20,7 +20,7 @@
     width: 100%;
     font-weight: bold;
     text-align: center;
-    font-size: 15vw;
+    font-size: 13vw;
     line-height: 1;
     border: 0;
     border-bottom: 3px solid #000000; }
@@ -35,7 +35,7 @@
   transition: 400ms width; }
 
 .counting {
-  animation: progressing 5s linear; }
+  animation: progressing linear; }
 
 @keyframes progressing {
   0% {

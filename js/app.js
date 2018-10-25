@@ -53,28 +53,32 @@ const functions = {
         }
         numbers.forEach(number => {
             numberContainer.innerHTML += `
-                <div class="col-3 mb-3">
+                <div class="col-2 mb-3">
                     <input type="text" class="application__number" value="${number}" maxlength="1" readonly>
                 </div>
             `;
         });
         setTimeout(function() {
-            functions.guessNumbers();
+            functions.setupGuessFields();
         }, 2000);
     },
-    guessNumbers: () => {
+    // Change this, PLEASE
+    setupGuessFields: () => {
         textsContainer.innerHTML = ``;
         numberContainer.innerHTML = ``;
         numbers.forEach(() => {
             numberContainer.innerHTML += `
-                <div class="col-3 mb-3">
+                <div class="col-2 mb-3">
                     <input type="number" class="application__number" inputMode="numeric" pattern="[0-9]*">
                 </div>
             `;
         });
-        setTimeout(() => {
-            appNumbers[0].focus();
-        }, 0);
+        appNumbers[0].addEventListener("focus", () => {
+            functions.guessNumber();
+        });
+        appNumbers[0].focus();
+    },
+    guessNumber: () => {
         for (let i = 0; i < numbers.length; i++) {
             appNumbers[i].addEventListener("keyup", () => {
                 if (i+1 == appNumbers.length) {
@@ -87,9 +91,11 @@ const functions = {
             });
         }
         countdown.classList.add("counting");
+        let countdownAmount = 5;
+        document.querySelector('.counting').style.animationDuration = countdownAmount + "s";
         let timer = setTimeout(() => {
             gatherResult();
-        }, 5000);
+        }, countdownAmount * 1000);
         function gatherResult() {
             clearTimeout(timer);
             for (let i = 0; i < numbers.length; i++) {
@@ -111,14 +117,14 @@ const functions = {
             if (numbers[i] === guesses[i]) {
                 rights++;
                 numberContainer.innerHTML += `
-                    <div class="col-3 mb-3">
+                    <div class="col-2 mb-3">
                         <input id="inp${i + 1}" type="text" class="application__number border-success text-success" value="${guesses[i]}" maxlength="1" readonly>
                     </div>
                 `;
             } else {
                 wrongs++;
                 numberContainer.innerHTML += `
-                    <div class="col-3 mb-3">
+                    <div class="col-2 mb-3">
                         <input id="inp${i + 1}" type="text" class="application__number border-danger text-danger" value="${guesses[i]}" maxlength="1" readonly>
                         <span class="text-success correct-number">${numbers[i]}</span>
                     </div>
