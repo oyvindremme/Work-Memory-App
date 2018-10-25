@@ -141,13 +141,13 @@ const functions = {
             textsContainer.innerHTML = `
                 <div class="col-md-12 text-center">
                     <h1>You did it!</h1>
-                    <p class="lead">Try the next level.</p>
+                    <p class="lead">Try out level ${currentLevel + 1}!</p>
                 </div>
             `;
             buttonContainer.innerHTML = `
                 <div class="col-md-12 text-center">
-                    <button class="btn btn-lg btn-outline-success" onclick="functions.init()">Back to menu</button>
-                    <button class="btn btn-lg btn-success" onclick="functions.showNumbers()">Next level</button>
+                    <button class="btn btn-lg btn-outline-success" onclick="functions.init()">Stop playing</button>
+                    <button class="btn btn-lg btn-success" onclick="functions.showNumbers()">Level ${currentLevel +1}</button>
                 </div>
             `;
         }
