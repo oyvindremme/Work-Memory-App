@@ -6,7 +6,7 @@
   display: grid;
   justify-items: center;
   align-items: center;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: auto;
   min-height: 100vh; }
   .application__number {
     width: 100%;
