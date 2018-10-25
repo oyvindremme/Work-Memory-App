@@ -44,7 +44,7 @@ const functions = {
         }
         numbers.forEach(number => {
             numberContainer.innerHTML += `
-                <div class="col-4 mb-3">
+                <div class="col-3 mb-3">
                     <input type="text" class="application__number" value="${number}" maxlength="1" readonly>
                 </div>
             `;
@@ -58,18 +58,22 @@ const functions = {
         numberContainer.innerHTML = ``;
         numbers.forEach(() => {
             numberContainer.innerHTML += `
-                <div class="col-4 mb-3">
+                <div class="col-3 mb-3">
                     <input type="number" class="application__number" inputMode="numeric" pattern="[0-9]*">
                 </div>
             `;
         });
-        appNumbers[0].focus();
+        setTimeout(() => {
+            appNumbers[0].focus();
+        }, 0);
         for (let i = 0; i < numbers.length; i++) {
             appNumbers[i].addEventListener("keyup", () => {
                 if (i+1 == appNumbers.length) {
                     gatherResult(); 
                 } else {
-                    appNumbers[i+1].focus();
+                    setTimeout(() => {
+                        appNumbers[i+1].focus();
+                    }, 0);
                 }
             });
         }
@@ -96,14 +100,14 @@ const functions = {
             if (numbers[i] === guesses[i]) {
                 rights++;
                 numberContainer.innerHTML += `
-                    <div class="col-4 mb-3">
+                    <div class="col-3 mb-3">
                         <input id="inp${i + 1}" type="text" class="application__number border-success text-success" value="${guesses[i]}" maxlength="1" readonly>
                     </div>
                 `;
             } else {
                 wrongs++;
                 numberContainer.innerHTML += `
-                    <div class="col-4 mb-3">
+                    <div class="col-3 mb-3">
                         <input id="inp${i + 1}" type="text" class="application__number border-danger text-danger" value="${guesses[i]}" maxlength="1" readonly>
                     </div>
                 `;
