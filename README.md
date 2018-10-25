@@ -3,6 +3,7 @@ A "web application" for measuring your work memory.
 
 ## To-do List
 - [x] Focus on first field
+- [] Indent by one number to remember when all fields are successful
 - [ ] Add countdown bar
 - [ ] Go to next field when filled out
 - [ ] Stop function when last field is completed (?)

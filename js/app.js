@@ -1,24 +1,39 @@
+const textsContainer = document.getElementById('texts');
 const numberContainer = document.getElementById('numbers');
+const buttonContainer = document.getElementById('buttons');
 const appNumbers = document.getElementsByClassName('application__number');
 
 let numbers = [];
 let userGuesses = [];
 
+let amount = 2;
+
 const functions = {
     init: () => {
-        numberContainer.classList.add('flex-column');
         numbers = [];
         guesses = [];
-        numberContainer.innerHTML = `
-            <h1>Hello!</h1>
-            <p class="lead">Press the start button to begin.</p>
-            <button class="btn btn-lg btn-success" onclick="functions.showNumbers()">Start</button>
+        amount = 2;
+        textsContainer.innerHTML = `
+            <div class="col-md-12">
+                <h1>Hello!</h1>
+                <p class="lead">Press start button to begin.</p>
+            </div>
+        `;
+        numberContainer.innerHTML = ``;
+        buttonContainer.innerHTML = `
+            <div class="col-md-12">
+                <button class="btn btn-lg btn-success btn-block" onclick="functions.showNumbers()">Start</button>
+            </div>
         `;
     },
     showNumbers: () => {
-        numberContainer.classList.remove('flex-column');
+        amount++;
+        numbers = [];
+        guesses = [];
+        textsContainer.innerHTML = ``;
         numberContainer.innerHTML = ``;
-        while (numbers.length < 4) {
+        buttonContainer.innerHTML = ``;
+        while (numbers.length < amount) {
             numbers.push(Math.floor(Math.random() * 10));
         }
         numbers.forEach(number => {
@@ -46,7 +61,7 @@ const functions = {
         for (let i = 0; i < numbers.length; i++) {
             appNumbers[i].addEventListener("keyup", () => {
                 if (i+1 == appNumbers.length) {
-                    functions.getScore();
+                    appNumbers[i].focus();
                 } else {
                     appNumbers[i+1].focus();
                 }
@@ -61,7 +76,14 @@ const functions = {
 
     },
     getScore: () => {
+        textsContainer.innerHTML = ``;
         numberContainer.innerHTML = ``;
+        buttonContainer.innerHTML = `
+            <div class="col-md-12 mt-5">
+                <button class="btn btn-lg btn-success btn-block" onclick="functions.showNumbers()">More numbers</button>
+                <button class="btn btn-lg btn-success btn-block" onclick="functions.init()">Back to start</button>
+            </div>
+        `;
         for (let i = 0; i < guesses.length; i++) {
             if (numbers[i] === guesses[i]) {
                 numberContainer.innerHTML += `
@@ -77,9 +99,6 @@ const functions = {
                 `;
             }
         }
-        numberContainer.innerHTML += `
-            <button class="btn btn-lg btn-success mt-5" onclick="functions.init()">Try again</button>
-        `;
     }
 };
 functions.init();
