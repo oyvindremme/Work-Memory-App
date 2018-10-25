@@ -45,8 +45,6 @@ const functions = {
         level.style.display = "block";
         level.innerHTML = `Level ${currentLevel}`;
 
-        console.log(currentLevel);
-
         textsContainer.innerHTML = ``;
         numberContainer.innerHTML = ``;
         buttonContainer.innerHTML = ``;
