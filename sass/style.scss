@@ -4,10 +4,11 @@
 }
 
 .application {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-rows: 1fr 1fr 1fr;
+    min-height: 100vh;
     &__number {
         width: 100%;
         font-weight: bold;
@@ -20,7 +21,7 @@
 }
 
 #countbar {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 0%;

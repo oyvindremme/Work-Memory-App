@@ -8,6 +8,9 @@ const countdown = document.getElementById('countbar');
 let numbers = [];
 let userGuesses = [];
 
+let rights = 0;
+let wrongs = 0;
+
 let amount = 2;
 
 let greetings = ["Hello", "Cheerio", "Sup", "Yo", "Bonjour", "Hola"];
@@ -16,19 +19,18 @@ const functions = {
     init: () => {
         numbers = [];
         guesses = [];
+        rights = 0;
+        wrongs = 0;
         amount = 2;
-        textsContainer.innerHTML = `
-            <div class="col-md-12">
+        textsContainer.innerHTML = ``;
+        numberContainer.innerHTML = `
+            <div class="col-md-12 text-center">
                 <h1>${greetings[Math.floor(Math.random() * greetings.length)]}!</h1>
                 <p class="lead">Press start button to begin.</p>
-            </div>
-        `;
-        numberContainer.innerHTML = ``;
-        buttonContainer.innerHTML = `
-            <div class="col-md-12 text-center">
                 <button class="btn btn-lg btn-success" onclick="functions.showNumbers()">Start</button>
             </div>
         `;
+        buttonContainer.innerHTML = ``;
     },
     showNumbers: () => {
         amount++;
@@ -78,35 +80,60 @@ const functions = {
         function gatherResult() {
             clearTimeout(timer);
             for (let i = 0; i < numbers.length; i++) {
-                typeof parseInt(appNumbers[i].value) === 'number' ? guesses.push(parseInt(appNumbers[i].value)) : guesses.push('?');
+                if (appNumbers[i].value === "" || appNumbers[i].value === " ") {
+                    guesses.push('?');
+                } else {
+                    guesses.push(parseInt(appNumbers[i].value))
+                }
             }
             functions.getScore();
         }
     },
     getScore: () => {
         countdown.classList.remove("counting");
-        textsContainer.innerHTML = ``;
         numberContainer.innerHTML = ``;
-        buttonContainer.innerHTML = `
-            <div class="col-md-12 mt-2 text-center">
-                <button class="btn btn-lg btn-success" onclick="functions.showNumbers()">Next level</button>
-                <button class="btn btn-lg btn-outline-success" onclick="functions.init()">Back to menu</button>
-            </div>
-        `;
         for (let i = 0; i < guesses.length; i++) {
             if (numbers[i] === guesses[i]) {
+                rights++;
                 numberContainer.innerHTML += `
                     <div class="col-4 mb-3">
                         <input id="inp${i + 1}" type="text" class="application__number border-success text-success" value="${guesses[i]}" maxlength="1" readonly>
                     </div>
                 `;
             } else {
+                wrongs++;
                 numberContainer.innerHTML += `
                     <div class="col-4 mb-3">
                         <input id="inp${i + 1}" type="text" class="application__number border-danger text-danger" value="${guesses[i]}" maxlength="1" readonly>
                     </div>
                 `;
             }
+        }
+        if (wrongs >= 1) {
+            textsContainer.innerHTML = `
+                <div class="col-md-12 text-center">
+                    <h1>Shucks!</h1>
+                    <p class="lead">Better luck next time.</p>
+                </div>
+            `;
+            buttonContainer.innerHTML = `
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-lg btn-outline-success" onclick="functions.init()">Back to menu</button>
+                </div>
+            `;
+        } else {
+            textsContainer.innerHTML = `
+                <div class="col-md-12 text-center">
+                    <h1>You did it!</h1>
+                    <p class="lead">Try the next level.</p>
+                </div>
+            `;
+            buttonContainer.innerHTML = `
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-lg btn-outline-success" onclick="functions.init()">Back to menu</button>
+                    <button class="btn btn-lg btn-success" onclick="functions.showNumbers()">Next level</button>
+                </div>
+            `;
         }
     }
 };
