@@ -1,5 +1,11 @@
 $primary: #28a745;
 
+// Mixins
+
+@mixin transition($property) {
+    transition: 400ms $property;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -13,7 +19,8 @@ $primary: #28a745;
     padding: 5px 10px;
     font-size: 25px;
     top: 0;
-    transition: 400ms top;
+    @include transition(top);
+    z-index: 101;
 }
 
 .application {
@@ -35,12 +42,12 @@ $primary: #28a745;
 
 #countbar {
     position: fixed;
-    top: 0;
     left: 0;
     width: 0%;
-    height: 20px;
+    height: 40px;
     background-color: $primary;
-    transition: 400ms width;
+    @include transition(all);
+    z-index: 100;
 }
 
 .counting {
@@ -49,10 +56,10 @@ $primary: #28a745;
 
 @keyframes progressing {
     0% {
-        width: 0%;
+        width: 100%;
     }
     100% {
-        width: 100%;
+        width: 0%;
     }
 }
 

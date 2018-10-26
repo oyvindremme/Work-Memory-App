@@ -10,7 +10,8 @@
   padding: 5px 10px;
   font-size: 25px;
   top: 0;
-  transition: 400ms top; }
+  transition: 400ms top;
+  z-index: 101; }
 
 .application {
   display: grid;
@@ -29,21 +30,21 @@
 
 #countbar {
   position: fixed;
-  top: 0;
   left: 0;
   width: 0%;
-  height: 20px;
+  height: 40px;
   background-color: #28a745;
-  transition: 400ms width; }
+  transition: 400ms all;
+  z-index: 100; }
 
 .counting {
   animation: progressing linear; }
 
 @keyframes progressing {
   0% {
-    width: 0%; }
+    width: 100%; }
   100% {
-    width: 100%; } }
+    width: 0%; } }
 .correct-number {
   position: absolute;
   top: 0;
