@@ -8,7 +8,9 @@
   background-color: #28a745;
   color: white;
   padding: 5px 10px;
-  font-size: 25px; }
+  font-size: 25px;
+  top: 0;
+  transition: 400ms top; }
 
 .application {
   display: grid;
@@ -27,7 +29,7 @@
 
 #countbar {
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 0%;
   height: 20px;
@@ -45,7 +47,7 @@
 .correct-number {
   position: absolute;
   top: 0;
-  right: 0; }
+  right: 7px; }
 
 input {
   -webkit-appearance: none;

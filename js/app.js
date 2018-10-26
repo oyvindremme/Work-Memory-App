@@ -1,3 +1,5 @@
+let greetings = ["Hello", "Cheerio", "Sup", "Yo", "Bonjour", "Hola"];
+
 const level = document.getElementById("level");
 let currentLevel = 0;
 
@@ -14,9 +16,9 @@ let userGuesses = [];
 let rights = 0;
 let wrongs = 0;
 
-let amount = 2;
+let boxesToGenerate = 2;
 
-let greetings = ["Hello", "Cheerio", "Sup", "Yo", "Bonjour", "Hola"];
+let countdownAmount = 5;
 
 const functions = {
     init: () => {
@@ -25,7 +27,7 @@ const functions = {
         guesses = [];
         rights = 0;
         wrongs = 0;
-        amount = 2;
+        boxesToGenerate = 2;
         textsContainer.innerHTML = ``;
         numberContainer.innerHTML = `
             <div class="col-md-12 text-center">
@@ -37,18 +39,19 @@ const functions = {
         buttonContainer.innerHTML = ``;
     },
     showNumbers: () => {
-        amount++;
+        boxesToGenerate++;
         numbers = [];
         guesses = [];
 
         currentLevel++;
         level.style.display = "block";
+        level.style.top = "0";
         level.innerHTML = `Level ${currentLevel}`;
 
         textsContainer.innerHTML = ``;
         numberContainer.innerHTML = ``;
         buttonContainer.innerHTML = ``;
-        while (numbers.length < amount) {
+        while (numbers.length < boxesToGenerate) {
             numbers.push(Math.floor(Math.random() * 10));
         }
         numbers.forEach(number => {
@@ -81,6 +84,7 @@ const functions = {
         }
     },
     guessNumber: () => {
+        level.style.top = "20px";
         for (let i = 0; i < numbers.length; i++) {
             appNumbers[i].addEventListener("keyup", () => {
                 if (i+1 == appNumbers.length) {
@@ -93,7 +97,14 @@ const functions = {
             });
         }
         countdown.classList.add("counting");
-        let countdownAmount = 5;
+        let appNumbersModulus = appNumbers.length % 3;
+        /*
+        * Every third game on and after level 5 gets plus two seconds of countdown.
+        * For example: Level 5 gets 7 seconds, level 8 gets 9 seconds and so forth.
+        */
+        if (appNumbers.length >= 6 && appNumbersModulus === 0) {
+            countdownAmount += 2;
+        }
         document.querySelector('.counting').style.animationDuration = countdownAmount + "s";
         let timer = setTimeout(() => {
             gatherResult();
