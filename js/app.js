@@ -23,11 +23,17 @@ let countdownAmount = 5;
 const functions = {
     init: () => {
         currentLevel = 0;
+
         numbers = [];
         guesses = [];
+
         rights = 0;
         wrongs = 0;
+
         boxesToGenerate = 2;
+
+        countdownAmount = 5;
+
         textsContainer.innerHTML = ``;
         numberContainer.innerHTML = `
             <div class="col-md-12 text-center">
