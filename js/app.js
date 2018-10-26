@@ -76,7 +76,9 @@ const functions = {
         appNumbers[0].addEventListener("focus", () => {
             functions.guessNumber();
         });
-        appNumbers[0].focus();
+        if (!(!!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform) || /windows phone/i.test(userAgent) || /android/i.test(userAgent))) {
+            appNumbers[0].focus();
+        }
     },
     guessNumber: () => {
         for (let i = 0; i < numbers.length; i++) {
