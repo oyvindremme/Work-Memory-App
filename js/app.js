@@ -39,7 +39,7 @@ const functions = {
             <div class="col-md-12 text-center">
                 <h1>${greetings[Math.floor(Math.random() * greetings.length)]}!</h1>
                 <p class="lead">Press start button to begin.</p>
-                <button class="btn btn-lg btn-success" onclick="functions.showNumbers()">Start</button>
+                <button class="btn btn-lg btn-primary" onclick="functions.showNumbers()">Start</button>
             </div>
         `;
         buttonContainer.innerHTML = ``;
@@ -140,7 +140,7 @@ const functions = {
                 rights++;
                 numberContainer.innerHTML += `
                     <div class="col-2 mb-3">
-                        <input id="inp${i + 1}" type="text" class="application__number border-success text-success" value="${guesses[i]}" maxlength="1" readonly>
+                        <input id="inp${i + 1}" type="text" class="application__number border-primary text-primary" value="${guesses[i]}" maxlength="1" readonly>
                     </div>
                 `;
             } else {
@@ -148,7 +148,7 @@ const functions = {
                 numberContainer.innerHTML += `
                     <div class="col-2 mb-3">
                         <input id="inp${i + 1}" type="text" class="application__number border-danger text-danger" value="${guesses[i]}" maxlength="1" readonly>
-                        <span class="text-success correct-number">${numbers[i]}</span>
+                        <span class="text-primary correct-number">${numbers[i]}</span>
                     </div>
                 `;
             }
@@ -162,7 +162,7 @@ const functions = {
             `;
             buttonContainer.innerHTML = `
                 <div class="col-md-12 text-center">
-                    <button class="btn btn-lg btn-outline-success" onclick="functions.init()">Back to menu</button>
+                    <button class="btn btn-lg btn-primary" onclick="functions.init()">Back to menu</button>
                 </div>
             `;
         } else {
@@ -174,8 +174,8 @@ const functions = {
             `;
             buttonContainer.innerHTML = `
                 <div class="col-md-12 text-center">
-                    <button class="btn btn-lg btn-outline-success" onclick="functions.init()">Stop playing</button>
-                    <button class="btn btn-lg btn-success" onclick="functions.showNumbers()">Level ${currentLevel +1}</button>
+                    <button class="btn btn-lg btn-primary" onclick="functions.showNumbers()">Level ${currentLevel +1}</button>
+                    <button class="btn btn-lg btn-outline-primary" onclick="functions.init()">Stop playing</button>
                 </div>
             `;
         }

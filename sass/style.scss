@@ -1,6 +1,9 @@
-$primary: #28a745;
+$theme-colors: (
+   primary: #27ae60,
+   danger: #c0392b
+);
 
-// Mixins
+@import 'bootstrap/bootstrap';
 
 @mixin transition($property) {
     transition: 400ms $property;
@@ -14,7 +17,7 @@ $primary: #28a745;
 #level {
     display: none;
     position: absolute;
-    background-color: $primary;
+    background-color: map-get($theme-colors, primary);
     color: white;
     padding: 5px 10px;
     font-size: 25px;
@@ -45,7 +48,7 @@ $primary: #28a745;
     left: 0;
     width: 0%;
     height: 40px;
-    background-color: $primary;
+    background-color: map-get($theme-colors, primary);
     @include transition(all);
     z-index: 100;
 }
