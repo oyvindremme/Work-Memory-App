@@ -108,7 +108,7 @@ const functions = {
         countdown.classList.add("counting");
         let appNumbersModulus = appNumbers.length % 3;
         /*
-        * Every third game on and after level 5 gets plus two seconds of countdown.
+        * Every third game on and after level 5 gets +2 seconds of countdown.
         * For example: Level 5 gets 7 seconds, level 8 gets 9 seconds and so forth.
         */
         if (appNumbers.length >= 6 && appNumbersModulus === 0) {
