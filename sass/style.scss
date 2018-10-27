@@ -36,7 +36,7 @@ $theme-colors: (
         width: 100%;
         font-weight: bold;
         text-align: center;
-        font-size: 13vw;
+        font-size: 9vw;
         line-height: 1;
         border: 0;
         border-bottom: 3px solid #000000;
@@ -87,3 +87,11 @@ input[type=number] {
 
 input {-webkit-appearance: none; box-shadow: none !important; }
 :-webkit-autofill { color: #fff !important; }
+
+@media (max-width: 768px) {
+    .application {
+        &__number {
+            font-size: 13vw;
+        }
+    }
+}

@@ -8638,7 +8638,7 @@ h3 {
   width: 100%;
   font-weight: bold;
   text-align: center;
-  font-size: 13vw;
+  font-size: 9vw;
   line-height: 1;
   border: 0;
   border-bottom: 3px solid #000000;
@@ -8690,6 +8690,12 @@ input {
 
 :-webkit-autofill {
   color: #fff !important;
+}
+
+@media (max-width: 768px) {
+  .application__number {
+    font-size: 13vw;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
