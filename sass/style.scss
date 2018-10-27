@@ -81,7 +81,8 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 input[type=number] {
-    -moz-appearance: textfield;
+    appearance: none;
+    -moz-appearance: none;
 }
 
 input {-webkit-appearance: none; box-shadow: none !important; }
