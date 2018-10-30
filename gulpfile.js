@@ -8,3 +8,5 @@ gulp.task('babel',  () => {
         }))
         .pipe(gulp.dest('public/js'))
 });
+
+gulp.task('default', [ 'babel' ]);
