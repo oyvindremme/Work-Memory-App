@@ -3,7 +3,7 @@ $theme-colors: (
    danger: #c0392b
 );
 
-@import 'bootstrap/bootstrap';
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
 
 @mixin transition($property) {
     transition: 400ms $property;

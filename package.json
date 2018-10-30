@@ -1,0 +1,22 @@
+{
+  "name": "work-memory-app",
+  "version": "1.0.0",
+  "description": "Work Memory measures your work memory",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oyvrem/Work-Memory-App.git"
+  },
+  "author": "Øyvind Remme",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oyvrem/Work-Memory-App/issues"
+  },
+  "homepage": "https://github.com/oyvrem/Work-Memory-App#readme",
+  "devDependencies": {
+    "bootstrap": "^4.1.3"
+  }
+}
