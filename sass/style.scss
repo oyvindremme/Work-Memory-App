@@ -61,9 +61,17 @@ $theme-colors: (
 @keyframes progressing {
     0% {
         width: 100%;
+        background-color: map-get($theme-colors, primary);
+    }
+    70% {
+        background-color: map-get($theme-colors, primary);
+    }
+    80% {
+        background-color: map-get($theme-colors, danger);
     }
     100% {
         width: 0%;
+        background-color: map-get($theme-colors, danger);
     }
 }
 

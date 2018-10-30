@@ -8662,9 +8662,17 @@ h3 {
 @keyframes progressing {
   0% {
     width: 100%;
+    background-color: #13a54e;
+  }
+  70% {
+    background-color: #13a54e;
+  }
+  80% {
+    background-color: #a51212;
   }
   100% {
     width: 0%;
+    background-color: #a51212;
   }
 }
 .correct-number {

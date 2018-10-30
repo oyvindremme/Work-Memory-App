@@ -14,6 +14,7 @@ var rights = 0;
 var wrongs = 0;
 var boxesToGenerate = 2;
 var countdownAmount = 5;
+var appNumbersModulus = appNumbers.length % 3;
 var functions = {
   init: function init() {
     currentLevel = 0;
@@ -81,7 +82,6 @@ var functions = {
     }
 
     countdown.classList.add("counting");
-    var appNumbersModulus = appNumbers.length % 3;
     /*
     * Every third game on and after level 5 gets +2 seconds of countdown.
     * For example: Level 5 gets 7 seconds, level 8 gets 9 seconds and so forth.
