@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/oyvrem/Work-Memory-App#readme",
   "devDependencies": {
-    "bootstrap": "^4.1.3"
+    "bootstrap": "^4.1.3",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^8.0.0"
   }
 }
