@@ -1,6 +1,6 @@
 $theme-colors: (
    primary: #13a54e,
-   danger: #a51212
+   danger: #E5411A
 );
 
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
@@ -42,6 +42,10 @@ $theme-colors: (
             line-height: 1;
             border: 0;
             border-bottom: 3px solid #000000;
+            border-style: solid;
+            &--wrong-answer {
+                border-style: dashed !important;
+            }
         }
     }
     div {
@@ -52,7 +56,7 @@ $theme-colors: (
             top: 0;
             right: 0;
             font-weight: 700;
-            font-size: 4vw;
+            font-size: 3.2vw;
         }
     }
 }
@@ -108,7 +112,10 @@ input {-webkit-appearance: none; box-shadow: none !important; }
 @media (max-width: 768px) {
     .application {
         div {
-            font-size: 4.3rem;
+            font-size: 3rem;
+            .correct-number {
+                font-size: 1.4rem;
+            }
         }
     }
 }

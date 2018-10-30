@@ -121,7 +121,7 @@ var app = {
         numberContainer.innerHTML += "\n                    <div class=\"application__number-container\">\n                        <input id=\"inp".concat(i + 1, "\" type=\"text\" class=\"application__number-container__number border-primary text-primary\" value=\"").concat(userGuesses[i], "\" maxlength=\"1\" readonly>\n                    </div>\n                ");
       } else {
         wrongs++;
-        numberContainer.innerHTML += "\n                    <div class=\"application__number-container\">\n                        <input id=\"inp".concat(i + 1, "\" type=\"text\" class=\"application__number-container__number border-danger text-danger\" value=\"").concat(userGuesses[i], "\" maxlength=\"1\" readonly>\n                        <span class=\"text-primary correct-number\">").concat(numbers[i], "</span>\n                    </div>\n                ");
+        numberContainer.innerHTML += "\n                    <div class=\"application__number-container\">\n                        <input id=\"inp".concat(i + 1, "\" type=\"text\" class=\"application__number-container__number application__number-container__number--wrong-answer border-danger text-danger\" value=\"").concat(userGuesses[i], "\" maxlength=\"1\" readonly>\n                        <span class=\"text-primary correct-number\">").concat(numbers[i], "</span>\n                    </div>\n                ");
       }
     }
 
