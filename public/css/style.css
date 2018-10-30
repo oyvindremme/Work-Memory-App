@@ -596,7 +596,7 @@ pre code {
 .col-lg-auto, .col-lg-12, .col-lg-11, .col-lg-10, .col-lg-9, .col-lg-8, .col-lg-7, .col-lg-6, .col-lg-5, .col-lg-4, .col-lg-3, .col-lg-2, .col-lg-1, .col-md,
 .col-md-auto, .col-md-12, .col-md-11, .col-md-10, .col-md-9, .col-md-8, .col-md-7, .col-md-6, .col-md-5, .col-md-4, .col-md-3, .col-md-2, .col-md-1, .col-sm,
 .col-sm-auto, .col-sm-12, .col-sm-11, .col-sm-10, .col-sm-9, .col-sm-8, .col-sm-7, .col-sm-6, .col-sm-5, .col-sm-4, .col-sm-3, .col-sm-2, .col-sm-1, .col,
-.col-auto, .col-12, .col-11, .col-10, .col-9, .col-8, .col-7, .col-6, .col-5, .col-4, .col-3, .col-2, .col-1 {
+.col-auto, .col-12, .col-11, .col-10, .col-9, .col-8, .col-7, .col-6, .col-5, .col-4, .col-3, .col-2, .application__number-container, .col-1 {
   position: relative;
   width: 100%;
   min-height: 1px;
@@ -621,7 +621,7 @@ pre code {
   max-width: 8.3333333333%;
 }
 
-.col-2 {
+.col-2, .application__number-container {
   flex: 0 0 16.6666666667%;
   max-width: 16.6666666667%;
 }
@@ -6876,7 +6876,7 @@ button.bg-dark:focus {
   margin-right: 3rem !important;
 }
 
-.mb-5,
+.mb-5, .application__number-container,
 .my-5 {
   margin-bottom: 3rem !important;
 }
@@ -8634,14 +8634,24 @@ h3 {
   grid-template-rows: auto;
   min-height: 100vh;
 }
-.application__number {
+.application__number-container__number {
   width: 100%;
   font-weight: bold;
   text-align: center;
-  font-size: 9vw;
   line-height: 1;
   border: 0;
   border-bottom: 3px solid #000000;
+}
+.application div {
+  font-size: 7rem;
+  line-height: 1;
+}
+.application div .correct-number {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-weight: 700;
+  font-size: 4vw;
 }
 
 #countbar {
@@ -8675,13 +8685,6 @@ h3 {
     background-color: #a51212;
   }
 }
-.correct-number {
-  position: absolute;
-  top: 0;
-  right: 7px;
-  font-weight: 700;
-}
-
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -8703,8 +8706,8 @@ input {
 }
 
 @media (max-width: 768px) {
-  .application__number {
-    font-size: 13vw;
+  .application div {
+    font-size: 4.3rem;
   }
 }
 

@@ -6,7 +6,7 @@ let currentLevel = 0;
 const textsContainer = document.getElementById('texts');
 const numberContainer = document.getElementById('numbers');
 const buttonContainer = document.getElementById('buttons');
-const appNumbers = document.getElementsByClassName('application__number');
+const appNumbers = document.getElementsByClassName('application__number-container__number');
 
 const countdown = document.getElementById('countbar');
 
@@ -63,8 +63,8 @@ const functions = {
         }
         numbers.forEach(number => {
             numberContainer.innerHTML += `
-                <div class="col-2 mb-3">
-                    <input type="text" class="application__number" value="${number}" maxlength="1" readonly>
+                <div class="application__number-container">
+                    <input type="text" class="application__number-container__number" value="${number}" maxlength="1" readonly>
                 </div>
             `;
         });
@@ -78,8 +78,8 @@ const functions = {
         numberContainer.innerHTML = ``;
         numbers.forEach(() => {
             numberContainer.innerHTML += `
-                <div class="col-2 mb-3">
-                    <input type="number" class="application__number" inputMode="numeric" pattern="[0-9]*">
+                <div class="application__number-container">
+                    <input type="number" class="application__number-container__number" inputMode="numeric" pattern="[0-9]*">
                 </div>
             `;
         });
@@ -134,15 +134,15 @@ const functions = {
             if (numbers[i] === userGuesses[i]) {
                 rights++;
                 numberContainer.innerHTML += `
-                    <div class="col-2 mb-3">
-                        <input id="inp${i + 1}" type="text" class="application__number border-primary text-primary" value="${userGuesses[i]}" maxlength="1" readonly>
+                    <div class="application__number-container">
+                        <input id="inp${i + 1}" type="text" class="application__number-container__number border-primary text-primary" value="${userGuesses[i]}" maxlength="1" readonly>
                     </div>
                 `;
             } else {
                 wrongs++;
                 numberContainer.innerHTML += `
-                    <div class="col-2 mb-3">
-                        <input id="inp${i + 1}" type="text" class="application__number border-danger text-danger" value="${userGuesses[i]}" maxlength="1" readonly>
+                    <div class="application__number-container">
+                        <input id="inp${i + 1}" type="text" class="application__number-container__number border-danger text-danger" value="${userGuesses[i]}" maxlength="1" readonly>
                         <span class="text-primary correct-number">${numbers[i]}</span>
                     </div>
                 `;

@@ -6,7 +6,7 @@ var currentLevel = 0;
 var textsContainer = document.getElementById('texts');
 var numberContainer = document.getElementById('numbers');
 var buttonContainer = document.getElementById('buttons');
-var appNumbers = document.getElementsByClassName('application__number');
+var appNumbers = document.getElementsByClassName('application__number-container__number');
 var countdown = document.getElementById('countbar');
 var numbers = [];
 var userGuesses = [];
@@ -44,7 +44,7 @@ var functions = {
     }
 
     numbers.forEach(function (number) {
-      numberContainer.innerHTML += "\n                <div class=\"col-2 mb-3\">\n                    <input type=\"text\" class=\"application__number\" value=\"".concat(number, "\" maxlength=\"1\" readonly>\n                </div>\n            ");
+      numberContainer.innerHTML += "\n                <div class=\"application__number-container\">\n                    <input type=\"text\" class=\"application__number-container__number\" value=\"".concat(number, "\" maxlength=\"1\" readonly>\n                </div>\n            ");
     });
     setTimeout(function () {
       functions.setupGuessFields();
@@ -55,7 +55,7 @@ var functions = {
     textsContainer.innerHTML = "";
     numberContainer.innerHTML = "";
     numbers.forEach(function () {
-      numberContainer.innerHTML += "\n                <div class=\"col-2 mb-3\">\n                    <input type=\"number\" class=\"application__number\" inputMode=\"numeric\" pattern=\"[0-9]*\">\n                </div>\n            ";
+      numberContainer.innerHTML += "\n                <div class=\"application__number-container\">\n                    <input type=\"number\" class=\"application__number-container__number\" inputMode=\"numeric\" pattern=\"[0-9]*\">\n                </div>\n            ";
     });
     appNumbers[0].addEventListener("focus", function () {
       functions.guessNumber();
@@ -118,10 +118,10 @@ var functions = {
     for (var i = 0; i < userGuesses.length; i++) {
       if (numbers[i] === userGuesses[i]) {
         rights++;
-        numberContainer.innerHTML += "\n                    <div class=\"col-2 mb-3\">\n                        <input id=\"inp".concat(i + 1, "\" type=\"text\" class=\"application__number border-primary text-primary\" value=\"").concat(userGuesses[i], "\" maxlength=\"1\" readonly>\n                    </div>\n                ");
+        numberContainer.innerHTML += "\n                    <div class=\"application__number-container\">\n                        <input id=\"inp".concat(i + 1, "\" type=\"text\" class=\"application__number-container__number border-primary text-primary\" value=\"").concat(userGuesses[i], "\" maxlength=\"1\" readonly>\n                    </div>\n                ");
       } else {
         wrongs++;
-        numberContainer.innerHTML += "\n                    <div class=\"col-2 mb-3\">\n                        <input id=\"inp".concat(i + 1, "\" type=\"text\" class=\"application__number border-danger text-danger\" value=\"").concat(userGuesses[i], "\" maxlength=\"1\" readonly>\n                        <span class=\"text-primary correct-number\">").concat(numbers[i], "</span>\n                    </div>\n                ");
+        numberContainer.innerHTML += "\n                    <div class=\"application__number-container\">\n                        <input id=\"inp".concat(i + 1, "\" type=\"text\" class=\"application__number-container__number border-danger text-danger\" value=\"").concat(userGuesses[i], "\" maxlength=\"1\" readonly>\n                        <span class=\"text-primary correct-number\">").concat(numbers[i], "</span>\n                    </div>\n                ");
       }
     }
 

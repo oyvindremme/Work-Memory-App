@@ -32,14 +32,28 @@ $theme-colors: (
     align-items: center;
     grid-template-rows: auto;
     min-height: 100vh;
-    &__number {
-        width: 100%;
-        font-weight: bold;
-        text-align: center;
-        font-size: 9vw;
+    &__number-container {
+        @extend .col-2;
+        @extend .mb-5;
+        &__number {
+            width: 100%;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1;
+            border: 0;
+            border-bottom: 3px solid #000000;
+        }
+    }
+    div {
+        font-size: 7rem;
         line-height: 1;
-        border: 0;
-        border-bottom: 3px solid #000000;
+        .correct-number {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-weight: 700;
+            font-size: 4vw;
+        }
     }
 }
 
@@ -75,13 +89,6 @@ $theme-colors: (
     }
 }
 
-.correct-number {
-    position: absolute;
-    top: 0;
-    right: 7px;
-    font-weight: 700;
-}
-
 // Remove handlebars on number inputs
 
 input[type=number]::-webkit-inner-spin-button, 
@@ -100,8 +107,8 @@ input {-webkit-appearance: none; box-shadow: none !important; }
 
 @media (max-width: 768px) {
     .application {
-        &__number {
-            font-size: 13vw;
+        div {
+            font-size: 4.3rem;
         }
     }
 }

@@ -1,7 +1,7 @@
 # Work-Memory-App
 [insert fancy project name here] helps you to exercise your brain, and keep score* of it!
 
-*leaderboard implementation soon to be added
+****leaderboard implementation soon to be added***
 
 The application is under construction, but features are planned to be added. See the below list:
 
