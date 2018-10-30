@@ -1,4 +1,4 @@
-let greetings = ["Hello", "Cheerio", "Sup", "Yo", "Bonjour", "Hola"];
+let greetings = ["Hello", "Cheerio", "Sup", "Yo", "Bonjour", "Hola", "Konichiwa"];
 
 const level = document.getElementById("level");
 let currentLevel = 0;
@@ -39,7 +39,7 @@ const functions = {
             <div class="col-md-12 text-center">
                 <h1>${greetings[Math.floor(Math.random() * greetings.length)]}!</h1>
                 <p class="lead">Press start button to begin.</p>
-                <button class="btn btn-lg btn-primary" onclick="functions.showNumbers()">Start</button>
+                <button class="btn btn-block btn-lg btn-primary" onclick="functions.showNumbers()">Start</button>
             </div>
         `;
         buttonContainer.innerHTML = ``;
@@ -99,9 +99,8 @@ const functions = {
                 if (i+1 == appNumbers.length) {
                     gatherResult(); 
                 } else {
-                    setTimeout(() => {
-                        appNumbers[i+1].focus();
-                    }, 0);
+                    appNumbers[i + 1].scrollIntoView();
+                    appNumbers[i+1].focus();
                 }
             });
         }
@@ -162,7 +161,7 @@ const functions = {
             `;
             buttonContainer.innerHTML = `
                 <div class="col-md-12 text-center">
-                    <button class="btn btn-lg btn-primary" onclick="functions.init()">Back to menu</button>
+                    <button class="btn btn-block btn-lg btn-primary" onclick="functions.init()">Back to menu</button>
                 </div>
             `;
         } else {
@@ -174,8 +173,8 @@ const functions = {
             `;
             buttonContainer.innerHTML = `
                 <div class="col-md-12 text-center">
-                    <button class="btn btn-lg btn-primary" onclick="functions.showNumbers()">Level ${currentLevel +1}</button>
-                    <button class="btn btn-lg btn-outline-primary" onclick="functions.init()">Stop playing</button>
+                    <button class="btn btn-block btn-lg btn-primary" onclick="functions.showNumbers()">Level ${currentLevel +1}</button>
+                    <button class="btn btn-block btn-lg btn-outline-primary" onclick="functions.init()">Stop playing</button>
                 </div>
             `;
         }

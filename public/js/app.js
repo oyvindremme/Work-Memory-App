@@ -1,6 +1,6 @@
 "use strict";
 
-var greetings = ["Hello", "Cheerio", "Sup", "Yo", "Bonjour", "Hola"];
+var greetings = ["Hello", "Cheerio", "Sup", "Yo", "Bonjour", "Hola", "Konichiwa"];
 var level = document.getElementById("level");
 var currentLevel = 0;
 var textsContainer = document.getElementById('texts');
@@ -24,7 +24,7 @@ var functions = {
     boxesToGenerate = 2;
     countdownAmount = 5;
     textsContainer.innerHTML = "";
-    numberContainer.innerHTML = "\n            <div class=\"col-md-12 text-center\">\n                <h1>".concat(greetings[Math.floor(Math.random() * greetings.length)], "!</h1>\n                <p class=\"lead\">Press start button to begin.</p>\n                <button class=\"btn btn-lg btn-primary\" onclick=\"functions.showNumbers()\">Start</button>\n            </div>\n        ");
+    numberContainer.innerHTML = "\n            <div class=\"col-md-12 text-center\">\n                <h1>".concat(greetings[Math.floor(Math.random() * greetings.length)], "!</h1>\n                <p class=\"lead\">Press start button to begin.</p>\n                <button class=\"btn btn-block btn-lg btn-primary\" onclick=\"functions.showNumbers()\">Start</button>\n            </div>\n        ");
     buttonContainer.innerHTML = "";
   },
   showNumbers: function showNumbers() {
@@ -75,9 +75,8 @@ var functions = {
         if (i + 1 == appNumbers.length) {
           gatherResult();
         } else {
-          setTimeout(function () {
-            appNumbers[i + 1].focus();
-          }, 0);
+          appNumbers[i + 1].scrollIntoView();
+          appNumbers[i + 1].focus();
         }
       });
     };
@@ -133,10 +132,10 @@ var functions = {
 
     if (wrongs >= 1) {
       textsContainer.innerHTML = "\n                <div class=\"col-md-12 text-center\">\n                    <h1>Oops!</h1>\n                    <p class=\"lead\">You made it to level ".concat(currentLevel, ".</p>\n                </div>\n            ");
-      buttonContainer.innerHTML = "\n                <div class=\"col-md-12 text-center\">\n                    <button class=\"btn btn-lg btn-primary\" onclick=\"functions.init()\">Back to menu</button>\n                </div>\n            ";
+      buttonContainer.innerHTML = "\n                <div class=\"col-md-12 text-center\">\n                    <button class=\"btn btn-block btn-lg btn-primary\" onclick=\"functions.init()\">Back to menu</button>\n                </div>\n            ";
     } else {
       textsContainer.innerHTML = "\n                <div class=\"col-md-12 text-center\">\n                    <h1>You did it!</h1>\n                    <p class=\"lead\">Try out level ".concat(currentLevel + 1, "!</p>\n                </div>\n            ");
-      buttonContainer.innerHTML = "\n                <div class=\"col-md-12 text-center\">\n                    <button class=\"btn btn-lg btn-primary\" onclick=\"functions.showNumbers()\">Level ".concat(currentLevel + 1, "</button>\n                    <button class=\"btn btn-lg btn-outline-primary\" onclick=\"functions.init()\">Stop playing</button>\n                </div>\n            ");
+      buttonContainer.innerHTML = "\n                <div class=\"col-md-12 text-center\">\n                    <button class=\"btn btn-block btn-lg btn-primary\" onclick=\"functions.showNumbers()\">Level ".concat(currentLevel + 1, "</button>\n                    <button class=\"btn btn-block btn-lg btn-outline-primary\" onclick=\"functions.init()\">Stop playing</button>\n                </div>\n            ");
     }
   }
 };
