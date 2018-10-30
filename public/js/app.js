@@ -15,7 +15,7 @@ var wrongs = 0;
 var boxesToGenerate = 2;
 var countdownAmount = 5;
 var appNumbersModulus = appNumbers.length % 3;
-var functions = {
+var app = {
   init: function init() {
     currentLevel = 0;
     numbers = [];
@@ -25,7 +25,7 @@ var functions = {
     boxesToGenerate = 2;
     countdownAmount = 5;
     textsContainer.innerHTML = "";
-    numberContainer.innerHTML = "\n            <div class=\"col-md-12 text-center\">\n                <h1>".concat(greetings[Math.floor(Math.random() * greetings.length)], "!</h1>\n                <p class=\"lead\">Press start button to begin.</p>\n                <button class=\"btn btn-block btn-lg btn-primary\" onclick=\"functions.showNumbers()\">Start</button>\n            </div>\n        ");
+    numberContainer.innerHTML = "\n            <div class=\"col-md-12 text-center\">\n                <h1>".concat(greetings[Math.floor(Math.random() * greetings.length)], "!</h1>\n                <p class=\"lead\">Press start button to begin.</p>\n                <button class=\"btn btn-block btn-lg btn-primary\" onclick=\"app.showNumbers()\">Start</button>\n            </div>\n        ");
     buttonContainer.innerHTML = "";
   },
   showNumbers: function showNumbers() {
@@ -47,7 +47,7 @@ var functions = {
       numberContainer.innerHTML += "\n                <div class=\"application__number-container\">\n                    <input type=\"text\" class=\"application__number-container__number\" value=\"".concat(number, "\" maxlength=\"1\" readonly>\n                </div>\n            ");
     });
     setTimeout(function () {
-      functions.setupGuessFields();
+      app.setupGuessFields();
     }, 2000);
   },
   // Change this, PLEASE
@@ -58,7 +58,7 @@ var functions = {
       numberContainer.innerHTML += "\n                <div class=\"application__number-container\">\n                    <input type=\"number\" class=\"application__number-container__number\" inputMode=\"numeric\" pattern=\"[0-9]*\">\n                </div>\n            ";
     });
     appNumbers[0].addEventListener("focus", function () {
-      functions.guessNumber();
+      app.guessNumber();
     });
 
     if (!(!!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform))) {
@@ -107,7 +107,7 @@ var functions = {
         }
       }
 
-      functions.getScore();
+      app.getScore();
     }
   },
   getScore: function getScore() {
@@ -127,11 +127,11 @@ var functions = {
 
     if (wrongs >= 1) {
       textsContainer.innerHTML = "\n                <div class=\"col-md-12 text-center\">\n                    <h1>Oops!</h1>\n                    <p class=\"lead\">You made it to level ".concat(currentLevel, ".</p>\n                </div>\n            ");
-      buttonContainer.innerHTML = "\n                <div class=\"col-md-12 text-center\">\n                    <button class=\"btn btn-block btn-lg btn-primary\" onclick=\"functions.init()\">Back to menu</button>\n                </div>\n            ";
+      buttonContainer.innerHTML = "\n                <div class=\"col-md-12 text-center\">\n                    <button class=\"btn btn-block btn-lg btn-primary\" onclick=\"app.init()\">Back to menu</button>\n                </div>\n            ";
     } else {
       textsContainer.innerHTML = "\n                <div class=\"col-md-12 text-center\">\n                    <h1>You did it!</h1>\n                    <p class=\"lead\">Try out level ".concat(currentLevel + 1, "!</p>\n                </div>\n            ");
-      buttonContainer.innerHTML = "\n                <div class=\"col-md-12 text-center\">\n                    <button class=\"btn btn-block btn-lg btn-primary\" onclick=\"functions.showNumbers()\">Level ".concat(currentLevel + 1, "</button>\n                    <button class=\"btn btn-block btn-lg btn-outline-primary\" onclick=\"functions.init()\">Stop playing</button>\n                </div>\n            ");
+      buttonContainer.innerHTML = "\n                <div class=\"col-md-12 text-center\">\n                    <button class=\"btn btn-block btn-lg btn-primary\" onclick=\"app.showNumbers()\">Level ".concat(currentLevel + 1, "</button>\n                    <button class=\"btn btn-block btn-lg btn-outline-primary\" onclick=\"app.init()\">Stop playing</button>\n                </div>\n            ");
     }
   }
 };
-functions.init();
+app.init();

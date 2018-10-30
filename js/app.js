@@ -22,7 +22,7 @@ let countdownAmount = 5;
 
 let appNumbersModulus = appNumbers.length % 3;
 
-const functions = {
+const app = {
     init: () => {
         currentLevel = 0;
 
@@ -41,7 +41,7 @@ const functions = {
             <div class="col-md-12 text-center">
                 <h1>${greetings[Math.floor(Math.random() * greetings.length)]}!</h1>
                 <p class="lead">Press start button to begin.</p>
-                <button class="btn btn-block btn-lg btn-primary" onclick="functions.showNumbers()">Start</button>
+                <button class="btn btn-block btn-lg btn-primary" onclick="app.showNumbers()">Start</button>
             </div>
         `;
         buttonContainer.innerHTML = ``;
@@ -69,7 +69,7 @@ const functions = {
             `;
         });
         setTimeout(function() {
-            functions.setupGuessFields();
+            app.setupGuessFields();
         }, 2000);
     },
     // Change this, PLEASE
@@ -84,7 +84,7 @@ const functions = {
             `;
         });
         appNumbers[0].addEventListener("focus", () => {
-            functions.guessNumber();
+            app.guessNumber();
         });
         if (!(!!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform))) {
             appNumbers[0].focus();
@@ -122,7 +122,7 @@ const functions = {
                     userGuesses.push(parseInt(appNumbers[i].value))
                 }
             }
-            functions.getScore();
+            app.getScore();
         }
     },
     getScore: () => {
@@ -157,7 +157,7 @@ const functions = {
             `;
             buttonContainer.innerHTML = `
                 <div class="col-md-12 text-center">
-                    <button class="btn btn-block btn-lg btn-primary" onclick="functions.init()">Back to menu</button>
+                    <button class="btn btn-block btn-lg btn-primary" onclick="app.init()">Back to menu</button>
                 </div>
             `;
         } else {
@@ -169,11 +169,14 @@ const functions = {
             `;
             buttonContainer.innerHTML = `
                 <div class="col-md-12 text-center">
-                    <button class="btn btn-block btn-lg btn-primary" onclick="functions.showNumbers()">Level ${currentLevel +1}</button>
-                    <button class="btn btn-block btn-lg btn-outline-primary" onclick="functions.init()">Stop playing</button>
+                    <button class="btn btn-block btn-lg btn-primary" onclick="app.showNumbers()">Level ${currentLevel +1}</button>
+                    <button class="btn btn-block btn-lg btn-outline-primary" onclick="app.init()">Stop playing</button>
                 </div>
             `;
         }
     }
 };
-functions.init();
+
+
+
+app.init();
