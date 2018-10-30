@@ -18,7 +18,7 @@ var functions = {
   init: function init() {
     currentLevel = 0;
     numbers = [];
-    guesses = [];
+    userGuesses = [];
     rights = 0;
     wrongs = 0;
     boxesToGenerate = 2;
@@ -30,7 +30,7 @@ var functions = {
   showNumbers: function showNumbers() {
     boxesToGenerate++;
     numbers = [];
-    guesses = [];
+    userGuesses = [];
     currentLevel++;
     level.style.display = "block";
     level.style.top = "0";
@@ -107,9 +107,9 @@ var functions = {
 
       for (var i = 0; i < numbers.length; i++) {
         if (appNumbers[i].value === "" || appNumbers[i].value === " ") {
-          guesses.push('?');
+          userGuesses.push('?');
         } else {
-          guesses.push(parseInt(appNumbers[i].value));
+          userGuesses.push(parseInt(appNumbers[i].value));
         }
       }
 
@@ -121,13 +121,13 @@ var functions = {
     countdown.classList.remove("counting");
     numberContainer.innerHTML = "";
 
-    for (var i = 0; i < guesses.length; i++) {
-      if (numbers[i] === guesses[i]) {
+    for (var i = 0; i < userGuesses.length; i++) {
+      if (numbers[i] === userGuesses[i]) {
         rights++;
-        numberContainer.innerHTML += "\n                    <div class=\"col-2 mb-3\">\n                        <input id=\"inp".concat(i + 1, "\" type=\"text\" class=\"application__number border-primary text-primary\" value=\"").concat(guesses[i], "\" maxlength=\"1\" readonly>\n                    </div>\n                ");
+        numberContainer.innerHTML += "\n                    <div class=\"col-2 mb-3\">\n                        <input id=\"inp".concat(i + 1, "\" type=\"text\" class=\"application__number border-primary text-primary\" value=\"").concat(userGuesses[i], "\" maxlength=\"1\" readonly>\n                    </div>\n                ");
       } else {
         wrongs++;
-        numberContainer.innerHTML += "\n                    <div class=\"col-2 mb-3\">\n                        <input id=\"inp".concat(i + 1, "\" type=\"text\" class=\"application__number border-danger text-danger\" value=\"").concat(guesses[i], "\" maxlength=\"1\" readonly>\n                        <span class=\"text-primary correct-number\">").concat(numbers[i], "</span>\n                    </div>\n                ");
+        numberContainer.innerHTML += "\n                    <div class=\"col-2 mb-3\">\n                        <input id=\"inp".concat(i + 1, "\" type=\"text\" class=\"application__number border-danger text-danger\" value=\"").concat(userGuesses[i], "\" maxlength=\"1\" readonly>\n                        <span class=\"text-primary correct-number\">").concat(numbers[i], "</span>\n                    </div>\n                ");
       }
     }
 

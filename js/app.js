@@ -25,7 +25,7 @@ const functions = {
         currentLevel = 0;
 
         numbers = [];
-        guesses = [];
+        userGuesses = [];
 
         rights = 0;
         wrongs = 0;
@@ -47,7 +47,7 @@ const functions = {
     showNumbers: () => {
         boxesToGenerate++;
         numbers = [];
-        guesses = [];
+        userGuesses = [];
 
         currentLevel++;
         level.style.display = "block";
@@ -122,9 +122,9 @@ const functions = {
             clearTimeout(timer);
             for (let i = 0; i < numbers.length; i++) {
                 if (appNumbers[i].value === "" || appNumbers[i].value === " ") {
-                    guesses.push('?');
+                    userGuesses.push('?');
                 } else {
-                    guesses.push(parseInt(appNumbers[i].value))
+                    userGuesses.push(parseInt(appNumbers[i].value))
                 }
             }
             functions.getScore();
@@ -135,19 +135,19 @@ const functions = {
 
         countdown.classList.remove("counting");
         numberContainer.innerHTML = ``;
-        for (let i = 0; i < guesses.length; i++) {
-            if (numbers[i] === guesses[i]) {
+        for (let i = 0; i < userGuesses.length; i++) {
+            if (numbers[i] === userGuesses[i]) {
                 rights++;
                 numberContainer.innerHTML += `
                     <div class="col-2 mb-3">
-                        <input id="inp${i + 1}" type="text" class="application__number border-primary text-primary" value="${guesses[i]}" maxlength="1" readonly>
+                        <input id="inp${i + 1}" type="text" class="application__number border-primary text-primary" value="${userGuesses[i]}" maxlength="1" readonly>
                     </div>
                 `;
             } else {
                 wrongs++;
                 numberContainer.innerHTML += `
                     <div class="col-2 mb-3">
-                        <input id="inp${i + 1}" type="text" class="application__number border-danger text-danger" value="${guesses[i]}" maxlength="1" readonly>
+                        <input id="inp${i + 1}" type="text" class="application__number border-danger text-danger" value="${userGuesses[i]}" maxlength="1" readonly>
                         <span class="text-primary correct-number">${numbers[i]}</span>
                     </div>
                 `;
