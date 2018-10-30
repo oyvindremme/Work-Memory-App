@@ -33,9 +33,7 @@ var functions = {
     userGuesses = [];
     currentLevel++;
     level.style.display = "block";
-    level.style.top = "0";
     level.innerHTML = "Level ".concat(currentLevel);
-    countdown.style.top = "-20px";
     textsContainer.innerHTML = "";
     numberContainer.innerHTML = "";
     buttonContainer.innerHTML = "";
@@ -67,9 +65,6 @@ var functions = {
     }
   },
   guessNumber: function guessNumber() {
-    level.style.top = "40px";
-    countdown.style.top = "0";
-
     var _loop = function _loop(i) {
       appNumbers[i].addEventListener("keyup", function () {
         if (i + 1 == appNumbers.length) {

@@ -51,10 +51,7 @@ const functions = {
 
         currentLevel++;
         level.style.display = "block";
-        level.style.top = "0";
         level.innerHTML = `Level ${currentLevel}`;
-
-        countdown.style.top = "-20px";
 
         textsContainer.innerHTML = ``;
         numberContainer.innerHTML = ``;
@@ -92,8 +89,6 @@ const functions = {
         }
     },
     guessNumber: () => {
-        level.style.top = "40px";
-        countdown.style.top = "0";
         for (let i = 0; i < numbers.length; i++) {
             appNumbers[i].addEventListener("keyup", () => {
                 if (i+1 == appNumbers.length) {

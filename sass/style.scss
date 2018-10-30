@@ -1,6 +1,6 @@
 $theme-colors: (
-   primary: #27ae60,
-   danger: #c0392b
+   primary: #13a54e,
+   danger: #a51212
 );
 
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
@@ -46,8 +46,9 @@ $theme-colors: (
 #countbar {
     position: fixed;
     left: 0;
+    bottom: 0;
     width: 0%;
-    height: 40px;
+    height: 80px;
     background-color: map-get($theme-colors, primary);
     @include transition(all);
     z-index: 100;
@@ -70,6 +71,7 @@ $theme-colors: (
     position: absolute;
     top: 0;
     right: 7px;
+    font-weight: 700;
 }
 
 // Remove handlebars on number inputs
