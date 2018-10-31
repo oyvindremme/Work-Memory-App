@@ -3,7 +3,7 @@ $theme-colors: (
    danger: #E5411A
 );
 
-@import '../node_modules/bootstrap/scss/bootstrap.scss';
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
 
 @mixin transition($property) {
     transition: 400ms $property;
