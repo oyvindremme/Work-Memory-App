@@ -3,10 +3,13 @@ const babel = require('gulp-babel');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 
+const sassSource = 'src/sass/style.scss';
+const jsSource = 'src/app/app.js';
+
 sass.compiler = require('node-sass');
 
 gulp.task('babel',  () => {
-    gulp.src('src/app/app.js')
+    gulp.src(jsSource)
         .pipe(babel({
             presets: ['@babel/env']
         }))
@@ -14,7 +17,7 @@ gulp.task('babel',  () => {
 });
 
 gulp.task('sass', () => {
-    gulp.src('src/sass/style.scss')
+    gulp.src(sassSource)
       .pipe(sass().on('error', sass.logError))
       .pipe(autoprefixer({
         browsers: ['last 2 versions'],
@@ -24,5 +27,5 @@ gulp.task('sass', () => {
 });
 
 gulp.task('watch', () => {
-    gulp.watch(['src/app/app.js', 'src/sass/style.scss'], [ 'babel', 'sass' ]);
+    gulp.watch([jsSource, sassSource], [ 'babel', 'sass' ]);
 });
