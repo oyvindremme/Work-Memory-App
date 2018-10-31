@@ -6,7 +6,7 @@ const autoprefixer = require('gulp-autoprefixer');
 sass.compiler = require('node-sass');
 
 gulp.task('babel',  () => {
-    gulp.src('js/app.js')
+    gulp.src('src/app/app.js')
         .pipe(babel({
             presets: ['@babel/env']
         }))
@@ -14,7 +14,7 @@ gulp.task('babel',  () => {
 });
 
 gulp.task('sass', () => {
-    gulp.src('sass/style.scss')
+    gulp.src('src/sass/style.scss')
       .pipe(sass().on('error', sass.logError))
       .pipe(autoprefixer({
         browsers: ['last 2 versions'],
@@ -24,5 +24,5 @@ gulp.task('sass', () => {
 });
 
 gulp.task('watch', () => {
-    gulp.watch(['js/app.js', 'sass/style.scss'], [ 'babel', 'sass' ]);
+    gulp.watch(['src/app/app.js', 'src/sass/style.scss'], [ 'babel', 'sass' ]);
 });
