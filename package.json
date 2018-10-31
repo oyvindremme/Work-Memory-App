@@ -4,7 +4,7 @@
   "description": "Work Memory measures your work memory",
   "main": "index.js",
   "scripts": {
-    "dev": "gulp watch"
+    "start": "gulp watch"
   },
   "repository": {
     "type": "git",
