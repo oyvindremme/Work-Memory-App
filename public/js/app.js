@@ -50,7 +50,6 @@ var app = {
       app.setupGuessFields();
     }, 2000);
   },
-  // Change this, PLEASE
   setupGuessFields: function setupGuessFields() {
     textsContainer.innerHTML = "";
     numberContainer.innerHTML = "";
@@ -130,7 +129,7 @@ var app = {
       buttonContainer.innerHTML = "\n                <div class=\"col-md-12 text-center\">\n                    <button class=\"btn btn-block btn-lg btn-primary\" onclick=\"app.init()\">Back to menu</button>\n                </div>\n            ";
     } else {
       textsContainer.innerHTML = "\n                <div class=\"col-md-12 text-center\">\n                    <h1>You did it!</h1>\n                    <p class=\"lead\">Try out level ".concat(currentLevel + 1, "!</p>\n                </div>\n            ");
-      buttonContainer.innerHTML = "\n                <div class=\"col-md-12 text-center\">\n                    <button class=\"btn btn-block btn-lg btn-primary\" onclick=\"app.showNumbers()\">Level ".concat(currentLevel + 1, "</button>\n                    <button class=\"btn btn-block btn-lg btn-outline-primary\" onclick=\"app.init()\">Stop playing</button>\n                </div>\n            ");
+      buttonContainer.innerHTML = "\n                <div class=\"col-6\">\n                \n                </div>\n                <div class=\"col-md-12 text-center\">\n                    <button class=\"btn btn-block btn-lg btn-primary\" onclick=\"app.showNumbers()\">Level ".concat(currentLevel + 1, "</button>\n                    <button class=\"btn btn-block btn-lg btn-outline-primary\" onclick=\"app.init()\">Stop playing</button>\n                </div>\n            ");
     }
   }
 };

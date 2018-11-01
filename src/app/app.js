@@ -72,7 +72,6 @@ const app = {
             app.setupGuessFields();
         }, 2000);
     },
-    // Change this, PLEASE
     setupGuessFields: () => {
         textsContainer.innerHTML = ``;
         numberContainer.innerHTML = ``;
@@ -168,8 +167,11 @@ const app = {
                 </div>
             `;
             buttonContainer.innerHTML = `
+                <div class="col-6">
+                
+                </div>
                 <div class="col-md-12 text-center">
-                    <button class="btn btn-block btn-lg btn-primary" onclick="app.showNumbers()">Level ${currentLevel +1}</button>
+                    <button class="btn btn-block btn-lg btn-primary" onclick="app.showNumbers()">Level ${currentLevel + 1}</button>
                     <button class="btn btn-block btn-lg btn-outline-primary" onclick="app.init()">Stop playing</button>
                 </div>
             `;

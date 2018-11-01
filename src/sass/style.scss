@@ -14,6 +14,10 @@ $theme-colors: (
     padding: 0;
 }
 
+body {
+    font-family: 'Arial', sans-serif;
+}
+
 #level {
     display: none;
     position: absolute;
@@ -41,7 +45,7 @@ $theme-colors: (
             text-align: center;
             line-height: 1;
             border: 0;
-            border-bottom: 3px solid #000000;
+            border-bottom: 7px solid #000000;
             border-style: solid;
             &--wrong-answer {
                 border-style: dashed !important;
@@ -55,7 +59,7 @@ $theme-colors: (
             position: absolute;
             top: 0;
             right: 0;
-            font-weight: 400;
+            font-weight: 700;
             font-size: 3.2vw;
         }
     }
@@ -118,4 +122,8 @@ input {-webkit-appearance: none; box-shadow: none !important; }
             }
         }
     }
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-weight: 700;
 }
