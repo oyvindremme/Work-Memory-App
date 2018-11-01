@@ -113,6 +113,10 @@ input[type=number] {
 input {-webkit-appearance: none; box-shadow: none !important; }
 :-webkit-autofill { color: #fff !important; }
 
+input:disabled {
+    background-color: white;
+}
+
 @media (max-width: 768px) {
     .application {
         div {

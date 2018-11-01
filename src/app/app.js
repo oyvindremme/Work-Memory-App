@@ -134,14 +134,14 @@ const app = {
                 rights++;
                 numberContainer.innerHTML += `
                     <div class="application__number-container">
-                        <input id="inp${i + 1}" type="text" class="application__number-container__number border-primary text-primary" value="${userGuesses[i]}" maxlength="1" readonly>
+                        <input id="inp${i + 1}" type="text" class="application__number-container__number border-primary text-primary" value="${userGuesses[i]}" maxlength="1" readonly disabled>
                     </div>
                 `;
             } else {
                 wrongs++;
                 numberContainer.innerHTML += `
                     <div class="application__number-container">
-                        <input id="inp${i + 1}" type="text" class="application__number-container__number application__number-container__number--wrong-answer border-danger text-danger" value="${userGuesses[i]}" maxlength="1" readonly>
+                        <input id="inp${i + 1}" type="text" class="application__number-container__number application__number-container__number--wrong-answer border-danger text-danger" value="${userGuesses[i]}" maxlength="1" readonly disabled>
                         <span class="text-primary correct-number">${numbers[i]}</span>
                     </div>
                 `;
