@@ -1,4 +1,4 @@
-let greetings = ["Hello", "Cheerio", "Sup", "Yo", "Bonjour", "Hola"];
+let greetings = ["Hello", "Cheerio", "Sup", "Yo", "Bonjour", "Hola", "Konichiwa"];
 
 const level = document.getElementById("level");
 let currentLevel = 0;
@@ -6,7 +6,7 @@ let currentLevel = 0;
 const textsContainer = document.getElementById('texts');
 const numberContainer = document.getElementById('numbers');
 const buttonContainer = document.getElementById('buttons');
-const appNumbers = document.getElementsByClassName('application__number');
+const appNumbers = document.getElementsByClassName('application__number-container__number');
 
 const countdown = document.getElementById('countbar');
 
@@ -20,12 +20,14 @@ let boxesToGenerate = 2;
 
 let countdownAmount = 5;
 
-const functions = {
+let appNumbersModulus = appNumbers.length % 3;
+
+const app = {
     init: () => {
         currentLevel = 0;
 
         numbers = [];
-        guesses = [];
+        userGuesses = [];
 
         rights = 0;
         wrongs = 0;
@@ -39,7 +41,7 @@ const functions = {
             <div class="col-md-12 text-center">
                 <h1>${greetings[Math.floor(Math.random() * greetings.length)]}!</h1>
                 <p class="lead">Press start button to begin.</p>
-                <button class="btn btn-lg btn-primary" onclick="functions.showNumbers()">Start</button>
+                <button class="btn btn-block btn-lg btn-primary" onclick="app.showNumbers()">Start</button>
             </div>
         `;
         buttonContainer.innerHTML = ``;
@@ -47,14 +49,11 @@ const functions = {
     showNumbers: () => {
         boxesToGenerate++;
         numbers = [];
-        guesses = [];
+        userGuesses = [];
 
         currentLevel++;
         level.style.display = "block";
-        level.style.top = "0";
         level.innerHTML = `Level ${currentLevel}`;
-
-        countdown.style.top = "-20px";
 
         textsContainer.innerHTML = ``;
         numberContainer.innerHTML = ``;
@@ -64,49 +63,44 @@ const functions = {
         }
         numbers.forEach(number => {
             numberContainer.innerHTML += `
-                <div class="col-2 mb-3">
-                    <input type="text" class="application__number" value="${number}" maxlength="1" readonly>
+                <div class="application__number-container">
+                    <input type="text" class="application__number-container__number" value="${number}" maxlength="1" readonly>
                 </div>
             `;
         });
         setTimeout(function() {
-            functions.setupGuessFields();
+            app.setupGuessFields();
         }, 2000);
     },
-    // Change this, PLEASE
     setupGuessFields: () => {
         textsContainer.innerHTML = ``;
         numberContainer.innerHTML = ``;
         numbers.forEach(() => {
             numberContainer.innerHTML += `
-                <div class="col-2 mb-3">
-                    <input type="number" class="application__number" inputMode="numeric" pattern="[0-9]*">
+                <div class="application__number-container">
+                    <input type="number" class="application__number-container__number" inputMode="numeric" pattern="[0-9]*">
                 </div>
             `;
         });
         appNumbers[0].addEventListener("focus", () => {
-            functions.guessNumber();
+            app.guessNumber();
         });
         if (!(!!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform))) {
             appNumbers[0].focus();
         }
     },
     guessNumber: () => {
-        level.style.top = "40px";
-        countdown.style.top = "0";
         for (let i = 0; i < numbers.length; i++) {
             appNumbers[i].addEventListener("keyup", () => {
                 if (i+1 == appNumbers.length) {
                     gatherResult(); 
                 } else {
-                    setTimeout(() => {
-                        appNumbers[i+1].focus();
-                    }, 0);
+                    appNumbers[i + 1].scrollIntoView();
+                    appNumbers[i+1].focus();
                 }
             });
         }
         countdown.classList.add("counting");
-        let appNumbersModulus = appNumbers.length % 3;
         /*
         * Every third game on and after level 5 gets +2 seconds of countdown.
         * For example: Level 5 gets 7 seconds, level 8 gets 9 seconds and so forth.
@@ -121,13 +115,13 @@ const functions = {
         function gatherResult() {
             clearTimeout(timer);
             for (let i = 0; i < numbers.length; i++) {
-                if (appNumbers[i].value === "" || appNumbers[i].value === " ") {
-                    guesses.push('?');
+                if (appNumbers[i].value === "" || appNumbers[i].value === " " || appNumbers[i].value.length > 1) {
+                    userGuesses.push('?');
                 } else {
-                    guesses.push(parseInt(appNumbers[i].value))
+                    userGuesses.push(parseInt(appNumbers[i].value))
                 }
             }
-            functions.getScore();
+            app.getScore();
         }
     },
     getScore: () => {
@@ -135,19 +129,19 @@ const functions = {
 
         countdown.classList.remove("counting");
         numberContainer.innerHTML = ``;
-        for (let i = 0; i < guesses.length; i++) {
-            if (numbers[i] === guesses[i]) {
+        for (let i = 0; i < userGuesses.length; i++) {
+            if (numbers[i] === userGuesses[i]) {
                 rights++;
                 numberContainer.innerHTML += `
-                    <div class="col-2 mb-3">
-                        <input id="inp${i + 1}" type="text" class="application__number border-primary text-primary" value="${guesses[i]}" maxlength="1" readonly>
+                    <div class="application__number-container">
+                        <input id="inp${i + 1}" type="text" class="application__number-container__number border-primary text-primary" value="${userGuesses[i]}" maxlength="1" readonly disabled>
                     </div>
                 `;
             } else {
                 wrongs++;
                 numberContainer.innerHTML += `
-                    <div class="col-2 mb-3">
-                        <input id="inp${i + 1}" type="text" class="application__number border-danger text-danger" value="${guesses[i]}" maxlength="1" readonly>
+                    <div class="application__number-container">
+                        <input id="inp${i + 1}" type="text" class="application__number-container__number application__number-container__number--wrong-answer border-danger text-danger" value="${userGuesses[i]}" maxlength="1" readonly disabled>
                         <span class="text-primary correct-number">${numbers[i]}</span>
                     </div>
                 `;
@@ -162,7 +156,7 @@ const functions = {
             `;
             buttonContainer.innerHTML = `
                 <div class="col-md-12 text-center">
-                    <button class="btn btn-lg btn-primary" onclick="functions.init()">Back to menu</button>
+                    <button class="btn btn-block btn-lg btn-primary" onclick="app.init()">Back to menu</button>
                 </div>
             `;
         } else {
@@ -173,12 +167,16 @@ const functions = {
                 </div>
             `;
             buttonContainer.innerHTML = `
+                <div class="col-6">
+                
+                </div>
                 <div class="col-md-12 text-center">
-                    <button class="btn btn-lg btn-primary" onclick="functions.showNumbers()">Level ${currentLevel +1}</button>
-                    <button class="btn btn-lg btn-outline-primary" onclick="functions.init()">Stop playing</button>
+                    <button class="btn btn-block btn-lg btn-primary" onclick="app.showNumbers()">Level ${currentLevel + 1}</button>
+                    <button class="btn btn-block btn-lg btn-outline-primary" onclick="app.init()">Stop playing</button>
                 </div>
             `;
         }
     }
 };
-functions.init();
+
+app.init();

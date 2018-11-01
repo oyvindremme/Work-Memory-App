@@ -1,0 +1,133 @@
+$theme-colors: (
+   primary: #13a54e,
+   danger: #E5411A
+);
+
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
+@mixin transition($property) {
+    transition: 400ms $property;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+#level {
+    display: none;
+    position: absolute;
+    background-color: map-get($theme-colors, primary);
+    color: white;
+    padding: 5px 10px;
+    font-size: 25px;
+    top: 0;
+    @include transition(top);
+    z-index: 101;
+}
+
+.application {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-rows: auto;
+    min-height: 100vh;
+    &__number-container {
+        @extend .col-2;
+        @extend .mb-5;
+        &__number {
+            width: 100%;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1;
+            border: 0;
+            border-bottom: 7px solid #000000;
+            border-style: solid;
+            &--wrong-answer {
+                border-style: dashed !important;
+            }
+        }
+    }
+    div {
+        font-size: 7rem;
+        line-height: 1;
+        .correct-number {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-weight: 700;
+            font-size: 3.2vw;
+        }
+    }
+}
+
+#countbar {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 80px;
+    background-color: map-get($theme-colors, primary);
+    @include transition(all);
+    z-index: 100;
+}
+
+.counting {
+     animation: progressing linear;
+}
+
+@keyframes progressing {
+    0% {
+        width: 100%;
+        background-color: map-get($theme-colors, primary);
+    }
+    70% {
+        background-color: map-get($theme-colors, primary);
+    }
+    80% {
+        background-color: map-get($theme-colors, danger);
+    }
+    100% {
+        width: 0%;
+        background-color: map-get($theme-colors, danger);
+    }
+}
+
+// Remove handlebars on number inputs
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] {
+    appearance: none;
+    -moz-appearance: none;
+}
+
+input {-webkit-appearance: none; box-shadow: none !important; }
+:-webkit-autofill { color: #fff !important; }
+
+input:disabled {
+    background-color: white;
+}
+
+@media (max-width: 768px) {
+    .application {
+        div {
+            font-size: 3rem;
+            .correct-number {
+                font-size: 1.4rem;
+            }
+        }
+    }
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-weight: 700;
+}
