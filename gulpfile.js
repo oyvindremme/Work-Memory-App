@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const babel = require('gulp-babel');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
+const minify = require('gulp-minify');
 
 const sassSource = 'src/sass/style.scss';
 const jsSource = 'src/app/app.js';
@@ -26,6 +27,12 @@ gulp.task('sass', () => {
       .pipe(gulp.dest('public/css'));
 });
 
+gulp.task('compress', function() {
+    gulp.src('public/js/app.js')
+      .pipe(minify())
+      .pipe(gulp.dest('public/js'))
+  });
+
 gulp.task('watch', () => {
-    gulp.watch([jsSource, sassSource], [ 'babel', 'sass' ]);
+    gulp.watch([jsSource, sassSource], [ 'babel', 'sass', 'compress' ]);
 });
