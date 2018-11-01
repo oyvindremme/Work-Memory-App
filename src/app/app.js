@@ -115,7 +115,7 @@ const app = {
         function gatherResult() {
             clearTimeout(timer);
             for (let i = 0; i < numbers.length; i++) {
-                if (appNumbers[i].value === "" || appNumbers[i].value === " ") {
+                if (appNumbers[i].value === "" || appNumbers[i].value === " " || appNumbers[i].value.length > 1) {
                     userGuesses.push('?');
                 } else {
                     userGuesses.push(parseInt(appNumbers[i].value))
