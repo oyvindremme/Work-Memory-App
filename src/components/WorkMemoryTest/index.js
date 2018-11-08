@@ -21,13 +21,7 @@ class WorkMemoryTestIndex extends React.Component {
 
     goToShowNumbers() {
         this.setState({
-            step: 1
-        });
-        this.incrementAndEraseValues();
-    }
-
-    incrementAndEraseValues() {
-        this.setState({
+            step: 1,
             boxesToGenerate: this.state.boxesToGenerate + 1,
             numbers: [],
             userGuesses: [],
@@ -86,6 +80,11 @@ class WorkMemoryTestIndex extends React.Component {
                     </div>
                 );
             case 3:
+            setTimeout(() => {
+                this.setState({
+                    step: 0
+                });
+            }, 2000);
                 return(
                     <h1>YAY YOU MADE IT WOOO</h1>
                 );
