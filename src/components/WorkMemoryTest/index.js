@@ -1,7 +1,7 @@
 import React from 'react';
 import StartMenu from './StartMenu';
-import ShowNumbers from './ShowNumbers';
-import SetUpGuessFields from './SetUpGuessFields';
+import ApplicationContainer from './ApplicationContainer';
+import NumberField from './NumberField';
 
 class WorkMemoryTestIndex extends React.Component {
     constructor() {
@@ -11,20 +11,22 @@ class WorkMemoryTestIndex extends React.Component {
             currentLevel: 0,
             numbers: [],
             userGuesses: [],
+            guessFields: [],
             rights: 0,
             wrongs: 0,
             boxesToGenerate: 2,
             countdownAmount: 5
         }
-        this.goToShowNumbers = this.goToShowNumbers.bind(this);
     }
 
-    goToShowNumbers() {
+    // Function to start/increment application
+    goToShowNumbers = () => {
         this.setState({
             step: 1,
             boxesToGenerate: this.state.boxesToGenerate + 1,
             numbers: [],
             userGuesses: [],
+            guessFields: [],
             currentLevel: this.state.currentLevel + 1,
         });
     }
@@ -32,69 +34,86 @@ class WorkMemoryTestIndex extends React.Component {
     render() {
         switch (this.state.step) {
             case 0:
+
                 return(
-                    <div className="application container">
+                    <ApplicationContainer>
                         <StartMenu startTest={this.goToShowNumbers}/>
-                    </div>
+                    </ApplicationContainer>
                 );
+
             case 1:
+
                 console.log(this.state.boxesToGenerate);
                 console.log(this.state.currentLevel);
+
                 while(this.state.numbers.length < this.state.boxesToGenerate){
                     this.state.numbers.push(Math.floor(Math.random() * 10));
                 };
+
                 let numbersArray = [];
-                this.state.numbers.forEach((number) => {
-                    numbersArray.push(<ShowNumbers key={number} fieldValue={number}/>);
+
+                this.state.numbers.forEach((number, i) => {
+                    numbersArray.push(<NumberField key={i} fieldValue={number}/>);
                 });
+
                 setTimeout(() => {
                     this.setState({
                         step: 2
                     });
                 }, 2000);
+
                 return(
-                    <div className="application container">
+                    <ApplicationContainer>
                         <div className="row justify-content-center">
                             {numbersArray}
                         </div>
-                    </div>
+                    </ApplicationContainer>
                 );
+
             case 2:
+
                 console.log(this.state.numbers);
-                console.log(this.state.userGuesses);
-                let guessFields = [];
-                this.state.numbers.forEach((number) => {
-                    guessFields.push(<SetUpGuessFields key={number} />);
+                this.state.numbers.forEach((number, i) => {
+                    this.state.guessFields.push(<NumberField key={i} fieldValue=""/>);
                 });
+
                 setTimeout(() => {
                     this.setState({
                         step: 3
                     });
-                    console.log(this.state.countdownAmount);
                 }, this.state.countdownAmount * 1000);
+
                 return(
-                    <div className="application container">
+                    <ApplicationContainer>
                         <div className="row justify-content-center">
-                            {guessFields}
+                            {this.state.guessFields}
                         </div>
-                    </div>
+                    </ApplicationContainer>
                 );
+
             case 3:
-            setTimeout(() => {
-                this.setState({
-                    step: 0
-                });
-            }, 2000);
+
+                setTimeout(() => {
+                    this.setState({
+                        step: 0
+                    });
+                }, 2000);
+                    console.log(this.state.userGuesses);
                 return(
-                    <h1>YAY YOU MADE IT WOOO</h1>
+                    <ApplicationContainer>
+                        <h1>END</h1>
+                    </ApplicationContainer>
                 );
+
             default:
+
                 break;
+
         }
         return(
-            <div className="container application">
+            <ApplicationContainer>
                 <StartMenu />
-            </div>
+            </ApplicationContainer>
         );
     }
 
