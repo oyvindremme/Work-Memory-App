@@ -1,8 +1,10 @@
 import React from 'react';
 
 class ApplicationContainer extends React.Component {
+
+
     render() {
-        return(
+        return (
             <div className="container" style={styles}>
                 {this.props.children}
             </div>
@@ -12,8 +14,7 @@ class ApplicationContainer extends React.Component {
 
 const styles = {
     display: 'grid',
-    justifyItems: 'center',
-    alignItems: 'center',
+    placeItems: 'center',
     gridTemplateRows: 'auto',
     minHeight: '100vh'
 }

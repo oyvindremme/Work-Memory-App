@@ -16,7 +16,7 @@ class StartMenu extends React.Component {
         return this.state.greetings[Math.floor(Math.random() * this.state.greetings.length)];
     }
     render() {
-        return(
+        return (
             <div className="row">
                 <div className="col-md-12 text-center">
                     <h1>{this.randomGreetings()}!</h1>

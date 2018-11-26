@@ -2,9 +2,9 @@ import React from 'react';
 
 class NumberField extends React.Component {
     render() {
-        return(
-            <div className="col-2 mb-5" style={styles}>
-                <input type="number" value={this.props.fieldValue} style={styles.input} inputMode="numeric" pattern="[0-9]*" />
+        return (
+            <div className="col-2 mb-5 input-field" style={styles}>
+                <input type="number" value={this.props.fieldValue} style={styles.input} inputMode="numeric" pattern="[0-9]*" readOnly={this.props.readonly} />
             </div>
         );
     }

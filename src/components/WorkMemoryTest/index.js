@@ -35,7 +35,7 @@ class WorkMemoryTestIndex extends React.Component {
         switch (this.state.step) {
             case 0:
 
-                return(
+                return (
                     <ApplicationContainer>
                         <StartMenu startTest={this.goToShowNumbers}/>
                     </ApplicationContainer>
@@ -43,17 +43,17 @@ class WorkMemoryTestIndex extends React.Component {
 
             case 1:
 
-                console.log(this.state.boxesToGenerate);
-                console.log(this.state.currentLevel);
+                console.log("Boxes to generate: "+this.state.boxesToGenerate);
+                console.log("Current level: "+this.state.currentLevel);
 
-                while(this.state.numbers.length < this.state.boxesToGenerate){
+                while (this.state.numbers.length < this.state.boxesToGenerate){
                     this.state.numbers.push(Math.floor(Math.random() * 10));
                 };
 
                 let numbersArray = [];
 
                 this.state.numbers.forEach((number, i) => {
-                    numbersArray.push(<NumberField key={i} fieldValue={number}/>);
+                    numbersArray.push(<NumberField key={i} fieldValue={number} readonly={true} />);
                 });
 
                 setTimeout(() => {
@@ -62,7 +62,7 @@ class WorkMemoryTestIndex extends React.Component {
                     });
                 }, 2000);
 
-                return(
+                return (
                     <ApplicationContainer>
                         <div className="row justify-content-center">
                             {numbersArray}
@@ -73,8 +73,8 @@ class WorkMemoryTestIndex extends React.Component {
             case 2:
 
                 console.log(this.state.numbers);
-                this.state.numbers.forEach((number, i) => {
-                    this.state.guessFields.push(<NumberField key={i} fieldValue=""/>);
+                this.state.numbers.forEach((i) => {
+                    this.state.guessFields.push(<NumberField key={i} fieldValue="" readonly={false} />);
                 });
 
                 setTimeout(() => {
@@ -83,7 +83,7 @@ class WorkMemoryTestIndex extends React.Component {
                     });
                 }, this.state.countdownAmount * 1000);
 
-                return(
+                return (
                     <ApplicationContainer>
                         <div className="row justify-content-center">
                             {this.state.guessFields}
@@ -99,9 +99,9 @@ class WorkMemoryTestIndex extends React.Component {
                     });
                 }, 2000);
                     console.log(this.state.userGuesses);
-                return(
+                return (
                     <ApplicationContainer>
-                        <h1>END</h1>
+                        <h1>END OF TEST</h1>
                     </ApplicationContainer>
                 );
 
