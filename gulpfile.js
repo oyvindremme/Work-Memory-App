@@ -2,12 +2,19 @@ const gulp = require('gulp');
 const babel = require('gulp-babel');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
-const minify = require('gulp-minify');
 
+const htmlSource = 'src/html/*.html';
 const sassSource = 'src/sass/style.scss';
 const jsSource = 'src/app/app.js';
 
+const gulpTasks = [ 'html', 'babel', 'sass' ];
+
 sass.compiler = require('node-sass');
+
+gulp.task('html', () => {
+  gulp.src(htmlSource)
+    .pipe(gulp.dest('public/'));
+});
 
 gulp.task('babel',  () => {
     gulp.src(jsSource)
@@ -27,12 +34,8 @@ gulp.task('sass', () => {
       .pipe(gulp.dest('public/css'));
 });
 
-gulp.task('compress', function() {
-    gulp.src('public/js/app.js')
-      .pipe(minify())
-      .pipe(gulp.dest('public/js'))
-  });
-
 gulp.task('watch', () => {
-    gulp.watch([jsSource, sassSource], [ 'babel', 'sass', 'compress' ]);
+    gulp.watch([jsSource, sassSource], gulpTasks);
 });
+
+gulp.task('build', gulpTasks);
